@@ -22,15 +22,18 @@ namespace TIPO_KURSACH
 
         private void button_Add_Click(object sender, EventArgs e)
         {
+            string queryString = "INSERT INTO dbo.Workers (Id_position, Id_workers, lastName, firstName, otchestvo, address, date) " +
+                "VALUES ('1', '1', '{0}', '{1}', '{2}', '{3}', '{4}')";
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.Text;
-            string queryString = "INSERT INTO dbo.Workers (Id_position, Id_workers, lastName, firstName, otchestvo, address, date) VALUES ('1', '1', 'Пидор', 'Блэт', 'Евгеньевич', 'Подвал', '1964-08-22')";
-            command.CommandText = queryString;
-            command.Connection = sqlConnection;
-
             sqlConnection.Open();
+
+            string last, first, otch, addr, dat;
+            last = lastNameTextBox.Text;first = firstNameTextBox.Text;otch = otchestvoTextBox.Text;addr = addressTextBox.Text;dat = date_BirthTextBox.Text;
+            string instCom = string.Format(queryString, last, first, otch, addr, dat);
+
+            SqlCommand command = new SqlCommand(instCom, sqlConnection);
+
             command.ExecuteNonQuery();
             sqlConnection.Close();
         }
