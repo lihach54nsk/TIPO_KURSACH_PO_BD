@@ -58,7 +58,7 @@ namespace TIPO_KURSACH
                 showFormat[j - 1] = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}",
                         record.GetValue(0).ToString(), record.GetValue(1).ToString(), record.GetValue(2).ToString(),
                         record.GetValue(3).ToString(), record.GetValue(4).ToString(), record.GetValue(5).ToString(),
-                        record.GetValue(6).ToString());              
+                        record.GetValue(6).ToString());
                 j++;
             }
 
@@ -73,18 +73,17 @@ namespace TIPO_KURSACH
             dataGridViewShow.Columns[5].Name = "Адрес проживания";
             dataGridViewShow.Columns[6].Name = "Дата рождения";
 
-            for (int k = 0; k < j; k++)
+            string split = ",";
+
+
+            for (int k = 0; k < j - 1; k++)
             {
                 for (int i = 0; i < j; i++)
                 {
-                    dataGridViewShow.Rows[k].Cells[i].Value = showFormat[k];
+                    //string s = showFormat[k].Split(Convert.ToChar(split))[i];
+                    dataGridViewShow.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(split))[i];
                 }
             }
-
-            /*for (int i = 0; i < 7; i++)
-                dataGridViewShow.Rows[j - 1].Cells[i].Value = record.GetValue(i).ToString();
-                */
-
             sqlConnection.Close();
         }
 
