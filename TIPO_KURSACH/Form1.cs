@@ -22,8 +22,8 @@ namespace TIPO_KURSACH
 
         private void button_Add_Click(object sender, EventArgs e)
         {
-            string queryString = "INSERT INTO dbo.Workers (Id_position, Id_workers, lastName, firstName, otchestvo, address, date) " +
-                "VALUES ('1', '1', '{0}', '{1}', '{2}', '{3}', '{4}')";
+            string queryString = "INSERT INTO dbo.Workers (Id_position, lastName, firstName, otchestvo, address, date) " +
+                "VALUES ('1', N'{0}', N'{1}', N'{2}', N'{3}', '{4}')";
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
             sqlConnection.Open();
