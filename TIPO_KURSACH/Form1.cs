@@ -28,9 +28,9 @@ namespace TIPO_KURSACH
 
             sqlConnection.Open();
 
-            string instCom = string.Format(queryString, positionTextBox.Text, lastNameTextBox.Text, firstNameTextBox.Text, otchestvoTextBox.Text, addressTextBox.Text, date_BirthTextBox.Text);
+            string insertFormat = string.Format(queryString, positionTextBox.Text, lastNameTextBox.Text, firstNameTextBox.Text, otchestvoTextBox.Text, addressTextBox.Text, date_BirthTextBox.Text);
 
-            SqlCommand command = new SqlCommand(instCom, sqlConnection);
+            SqlCommand command = new SqlCommand(insertFormat, sqlConnection);
 
             command.ExecuteNonQuery();
             sqlConnection.Close();
@@ -38,7 +38,32 @@ namespace TIPO_KURSACH
 
         private void buttonShow_Click(object sender, EventArgs e)
         {
+            string queryString = "SELECT * FROM dbo.Workers ORDER BY Id_position";
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
 
+            sqlConnection.Open();
+
+            SqlCommand command = new SqlCommand(queryString, sqlConnection);
+
+            var data = command.ExecuteReader();
+
+            int j = 1;
+
+            while (data.Read())
+            {
+                IDataRecord record = data;
+
+                dataGridViewShow.RowCount = j;
+
+                string showFormat = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}",
+                        record.GetValue(0).ToString(), record.GetValue(1).ToString(), record.GetValue(2).ToString(),
+                        record.GetValue(3).ToString(), record.GetValue(4).ToString(), record.GetValue(5).ToString(),
+                        record.GetValue(6).ToString());
+                //dataGridViewShow.Rows.Insert(0, showFormat);
+                dataGridViewShow.Rows.Add(showFormat);
+                j++;
+            }
+            sqlConnection.Close();
         }
 
         private void button_Update_Click(object sender, EventArgs e)
