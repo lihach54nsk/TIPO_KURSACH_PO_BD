@@ -46,10 +46,8 @@ namespace TIPO_KURSACH
             SqlCommand command = new SqlCommand(queryString, sqlConnection);
 
             var data = command.ExecuteReader();
-            //IDataRecord[] record=new IDataRecord[10000];
             string[] showFormat = new string[10000];
             int j = 1;
-            int p = 0;
 
             while (data.Read())
             {
@@ -75,12 +73,10 @@ namespace TIPO_KURSACH
 
             string split = ",";
 
-
             for (int k = 0; k < j - 1; k++)
             {
                 for (int i = 0; i < data.FieldCount; i++)
                 {
-                    //string s = showFormat[k].Split(Convert.ToChar(split))[i];
                     dataGridViewShow.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(split))[i];
                 }
             }
