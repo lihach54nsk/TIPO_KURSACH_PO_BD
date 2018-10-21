@@ -40,5 +40,10 @@ namespace TIPO_KURSACH
         {
 
         }
+
+        private void button_Update_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -39,15 +39,17 @@
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.otchestvoTextBox = new System.Windows.Forms.TextBox();
             this.date_BirthTextBox = new System.Windows.Forms.TextBox();
-            this.listBoxShow = new System.Windows.Forms.ListBox();
             this.buttonShow = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button_Update = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button_Add
             // 
-            this.button_Add.Location = new System.Drawing.Point(12, 235);
+            this.button_Add.Location = new System.Drawing.Point(11, 140);
             this.button_Add.Name = "button_Add";
-            this.button_Add.Size = new System.Drawing.Size(162, 58);
+            this.button_Add.Size = new System.Drawing.Size(277, 61);
             this.button_Add.TabIndex = 0;
             this.button_Add.Text = "Добавить";
             this.button_Add.UseVisualStyleBackColor = true;
@@ -133,31 +135,42 @@
             this.date_BirthTextBox.Size = new System.Drawing.Size(164, 20);
             this.date_BirthTextBox.TabIndex = 10;
             // 
-            // listBoxShow
-            // 
-            this.listBoxShow.FormattingEnabled = true;
-            this.listBoxShow.Location = new System.Drawing.Point(317, 9);
-            this.listBoxShow.Name = "listBoxShow";
-            this.listBoxShow.Size = new System.Drawing.Size(471, 134);
-            this.listBoxShow.TabIndex = 11;
-            // 
             // buttonShow
             // 
-            this.buttonShow.Location = new System.Drawing.Point(626, 235);
+            this.buttonShow.Location = new System.Drawing.Point(317, 141);
             this.buttonShow.Name = "buttonShow";
-            this.buttonShow.Size = new System.Drawing.Size(162, 58);
+            this.buttonShow.Size = new System.Drawing.Size(577, 124);
             this.buttonShow.TabIndex = 12;
             this.buttonShow.Text = "Показать";
             this.buttonShow.UseVisualStyleBackColor = true;
             this.buttonShow.Click += new System.EventHandler(this.buttonShow_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(317, 9);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(577, 126);
+            this.dataGridView1.TabIndex = 13;
+            // 
+            // button_Update
+            // 
+            this.button_Update.Location = new System.Drawing.Point(11, 207);
+            this.button_Update.Name = "button_Update";
+            this.button_Update.Size = new System.Drawing.Size(277, 61);
+            this.button_Update.TabIndex = 14;
+            this.button_Update.Text = "Редактировать";
+            this.button_Update.UseVisualStyleBackColor = true;
+            this.button_Update.Click += new System.EventHandler(this.button_Update_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 305);
+            this.ClientSize = new System.Drawing.Size(906, 277);
+            this.Controls.Add(this.button_Update);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonShow);
-            this.Controls.Add(this.listBoxShow);
             this.Controls.Add(this.date_BirthTextBox);
             this.Controls.Add(this.otchestvoTextBox);
             this.Controls.Add(this.firstNameTextBox);
@@ -171,6 +184,7 @@
             this.Controls.Add(this.button_Add);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,8 +203,9 @@
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox otchestvoTextBox;
         private System.Windows.Forms.TextBox date_BirthTextBox;
-        private System.Windows.Forms.ListBox listBoxShow;
         private System.Windows.Forms.Button buttonShow;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button_Update;
     }
 }
 
