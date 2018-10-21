@@ -78,7 +78,7 @@ namespace TIPO_KURSACH
 
             for (int k = 0; k < j - 1; k++)
             {
-                for (int i = 0; i < j; i++)
+                for (int i = 0; i < data.FieldCount; i++)
                 {
                     //string s = showFormat[k].Split(Convert.ToChar(split))[i];
                     dataGridViewShow.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(split))[i];
