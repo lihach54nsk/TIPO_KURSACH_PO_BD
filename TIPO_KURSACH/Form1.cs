@@ -46,23 +46,45 @@ namespace TIPO_KURSACH
             SqlCommand command = new SqlCommand(queryString, sqlConnection);
 
             var data = command.ExecuteReader();
-
+            //IDataRecord[] record=new IDataRecord[10000];
+            string[] showFormat = new string[10000];
             int j = 1;
+            int p = 0;
 
             while (data.Read())
             {
                 IDataRecord record = data;
 
-                dataGridViewShow.RowCount = j;
-
-                string showFormat = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}",
+                showFormat[j - 1] = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}",
                         record.GetValue(0).ToString(), record.GetValue(1).ToString(), record.GetValue(2).ToString(),
                         record.GetValue(3).ToString(), record.GetValue(4).ToString(), record.GetValue(5).ToString(),
-                        record.GetValue(6).ToString());
-                //dataGridViewShow.Rows.Insert(0, showFormat);
-                dataGridViewShow.Rows.Add(showFormat);
+                        record.GetValue(6).ToString());              
                 j++;
             }
+
+            dataGridViewShow.RowCount = j;
+            dataGridViewShow.ColumnCount = data.FieldCount;
+
+            dataGridViewShow.Columns[0].Name = "ID";
+            dataGridViewShow.Columns[1].Name = "ID_P";
+            dataGridViewShow.Columns[2].Name = "Фамилия";
+            dataGridViewShow.Columns[3].Name = "Имя";
+            dataGridViewShow.Columns[4].Name = "Отчество";
+            dataGridViewShow.Columns[5].Name = "Адрес проживания";
+            dataGridViewShow.Columns[6].Name = "Дата рождения";
+
+            for (int k = 0; k < j; k++)
+            {
+                for (int i = 0; i < j; i++)
+                {
+                    dataGridViewShow.Rows[k].Cells[i].Value = showFormat[k];
+                }
+            }
+
+            /*for (int i = 0; i < 7; i++)
+                dataGridViewShow.Rows[j - 1].Cells[i].Value = record.GetValue(i).ToString();
+                */
+
             sqlConnection.Close();
         }
 
