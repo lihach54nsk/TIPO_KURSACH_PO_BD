@@ -13,7 +13,7 @@ namespace TIPO_KURSACH
 {
     public partial class Form1 : Form
     {
-        string connectionString =@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Геральт из Ривии\Documents\TIPO_KURSACH\TIPO_KURSACH\Database1.mdf;Integrated Security = True";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Геральт из Ривии\Documents\TIPO_KURSACH\TIPO_KURSACH\Database1.mdf;Integrated Security = True";
 
         public Form1()
         {
@@ -28,9 +28,7 @@ namespace TIPO_KURSACH
 
             sqlConnection.Open();
 
-            string last, first, otch, addr, dat;
-            last = lastNameTextBox.Text;first = firstNameTextBox.Text;otch = otchestvoTextBox.Text;addr = addressTextBox.Text;dat = date_BirthTextBox.Text;
-            string instCom = string.Format(queryString, last, first, otch, addr, dat);
+            string instCom = string.Format(queryString, lastNameTextBox.Text, firstNameTextBox.Text, otchestvoTextBox.Text, addressTextBox.Text, date_BirthTextBox.Text);
 
             SqlCommand command = new SqlCommand(instCom, sqlConnection);
 
@@ -40,7 +38,7 @@ namespace TIPO_KURSACH
 
         private void buttonShow_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
