@@ -23,12 +23,12 @@ namespace TIPO_KURSACH
         private void button_Add_Click(object sender, EventArgs e)
         {
             string queryString = "INSERT INTO dbo.Workers (Id_position, lastName, firstName, otchestvo, address, date) " +
-                "VALUES ('1', N'{0}', N'{1}', N'{2}', N'{3}', '{4}')";
+                "VALUES ('{0}', N'{1}', N'{2}', N'{3}', N'{4}', '{5}')";
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
             sqlConnection.Open();
 
-            string instCom = string.Format(queryString, lastNameTextBox.Text, firstNameTextBox.Text, otchestvoTextBox.Text, addressTextBox.Text, date_BirthTextBox.Text);
+            string instCom = string.Format(queryString, positionTextBox.Text, lastNameTextBox.Text, firstNameTextBox.Text, otchestvoTextBox.Text, addressTextBox.Text, date_BirthTextBox.Text);
 
             SqlCommand command = new SqlCommand(instCom, sqlConnection);
 

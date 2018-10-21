@@ -40,14 +40,16 @@
             this.otchestvoTextBox = new System.Windows.Forms.TextBox();
             this.date_BirthTextBox = new System.Windows.Forms.TextBox();
             this.buttonShow = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewShow = new System.Windows.Forms.DataGridView();
             this.button_Update = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.label6 = new System.Windows.Forms.Label();
+            this.positionTextBox = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShow)).BeginInit();
             this.SuspendLayout();
             // 
             // button_Add
             // 
-            this.button_Add.Location = new System.Drawing.Point(11, 140);
+            this.button_Add.Location = new System.Drawing.Point(11, 166);
             this.button_Add.Name = "button_Add";
             this.button_Add.Size = new System.Drawing.Size(277, 61);
             this.button_Add.TabIndex = 0;
@@ -137,25 +139,25 @@
             // 
             // buttonShow
             // 
-            this.buttonShow.Location = new System.Drawing.Point(317, 141);
+            this.buttonShow.Location = new System.Drawing.Point(317, 166);
             this.buttonShow.Name = "buttonShow";
-            this.buttonShow.Size = new System.Drawing.Size(577, 124);
+            this.buttonShow.Size = new System.Drawing.Size(577, 128);
             this.buttonShow.TabIndex = 12;
             this.buttonShow.Text = "Показать";
             this.buttonShow.UseVisualStyleBackColor = true;
             this.buttonShow.Click += new System.EventHandler(this.buttonShow_Click);
             // 
-            // dataGridView1
+            // dataGridViewShow
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(317, 9);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(577, 126);
-            this.dataGridView1.TabIndex = 13;
+            this.dataGridViewShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewShow.Location = new System.Drawing.Point(317, 9);
+            this.dataGridViewShow.Name = "dataGridViewShow";
+            this.dataGridViewShow.Size = new System.Drawing.Size(577, 151);
+            this.dataGridViewShow.TabIndex = 13;
             // 
             // button_Update
             // 
-            this.button_Update.Location = new System.Drawing.Point(11, 207);
+            this.button_Update.Location = new System.Drawing.Point(12, 233);
             this.button_Update.Name = "button_Update";
             this.button_Update.Size = new System.Drawing.Size(277, 61);
             this.button_Update.TabIndex = 14;
@@ -163,13 +165,31 @@
             this.button_Update.UseVisualStyleBackColor = true;
             this.button_Update.Click += new System.EventHandler(this.button_Update_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 143);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Должность: ";
+            // 
+            // positionTextBox
+            // 
+            this.positionTextBox.Location = new System.Drawing.Point(124, 140);
+            this.positionTextBox.Name = "positionTextBox";
+            this.positionTextBox.Size = new System.Drawing.Size(164, 20);
+            this.positionTextBox.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 277);
+            this.ClientSize = new System.Drawing.Size(906, 307);
+            this.Controls.Add(this.positionTextBox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button_Update);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewShow);
             this.Controls.Add(this.buttonShow);
             this.Controls.Add(this.date_BirthTextBox);
             this.Controls.Add(this.otchestvoTextBox);
@@ -184,7 +204,7 @@
             this.Controls.Add(this.button_Add);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,8 +224,10 @@
         private System.Windows.Forms.TextBox otchestvoTextBox;
         private System.Windows.Forms.TextBox date_BirthTextBox;
         private System.Windows.Forms.Button buttonShow;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewShow;
         private System.Windows.Forms.Button button_Update;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox positionTextBox;
     }
 }
 
