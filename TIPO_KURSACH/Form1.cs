@@ -85,7 +85,9 @@ namespace TIPO_KURSACH
 
         private void button_Update_Click(object sender, EventArgs e)
         {
+            Update_Form update_Form = new Update_Form();
 
+            update_Form.Show();
         }
     }
 }
