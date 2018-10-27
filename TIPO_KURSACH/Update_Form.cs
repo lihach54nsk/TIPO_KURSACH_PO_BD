@@ -22,17 +22,19 @@ namespace TIPO_KURSACH
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void EditTextBox_Click(object sender, EventArgs e)
         {
-            string queryString = "UPDATE dbo.Workers SET Id_position = '1', lastName = N'Я', firstName = N'ЕСТЬ', otchestvo = N'ГРУТ', address = N'ДУПЛО', date = '2222-02-02' WHERE Id_position = '1'";
+            string updateString = "UPDATE dbo.Workers SET Id_position = '{0}', lastName = N'{1}', firstName = N'{2}', otchestvo = N'{3}', address = N'{4}', date = '{5}' WHERE Id_position = '1'";
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
             sqlConnection.Open();
 
-            SqlCommand command = new SqlCommand(queryString, sqlConnection);
+            string updateFormat = string.Format(updateString, positionSearchTextBox.Text, lastNameSearchTextBox.Text, firstNameSearchTextBox.Text, otchestvoSearchTextBox.Text, addressSearchTextBox.Text, date_BirthSearchTextBox.Text);
+
+            SqlCommand command = new SqlCommand(updateFormat, sqlConnection);
 
             command.ExecuteNonQuery();
             sqlConnection.Close();
