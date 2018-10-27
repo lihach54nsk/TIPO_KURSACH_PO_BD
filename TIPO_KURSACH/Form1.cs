@@ -71,8 +71,6 @@ namespace TIPO_KURSACH
             dataGridViewShow.Columns[5].Name = "Адрес проживания";
             dataGridViewShow.Columns[6].Name = "Дата рождения";
 
-           // string split = ",";
-
             for (int k = 0; k < j - 1; k++)
             {
                 for (int i = 0; i < data.FieldCount; i++)
