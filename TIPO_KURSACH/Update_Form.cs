@@ -66,6 +66,8 @@ namespace TIPO_KURSACH
             }
 
             sqlConnection.Close();
+
+            // сделать вывод значений по клику в таблице и отправить на редактирование по ид записи
         }
 
         private void EditTextBox_Click(object sender, EventArgs e)
