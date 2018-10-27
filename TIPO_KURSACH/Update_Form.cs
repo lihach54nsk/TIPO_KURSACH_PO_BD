@@ -22,7 +22,50 @@ namespace TIPO_KURSACH
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            
+            string searchString = "SELECT * FROM dbo.Workers WHERE dbo.Workers.lastName LIKE N'{0}'";
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            sqlConnection.Open();
+
+            string searchFormat = string.Format(searchString, SearchTextBox.Text);
+
+            SqlCommand searchCommand = new SqlCommand(searchFormat, sqlConnection);
+
+            var data = searchCommand.ExecuteReader();
+            string[] showFormat = new string[10000];
+            int j = 1;
+
+            while (data.Read())
+            {
+                IDataRecord record = data;
+
+                showFormat[j - 1] = string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}",
+                        record.GetValue(0).ToString(), record.GetValue(1).ToString(), record.GetValue(2).ToString(),
+                        record.GetValue(3).ToString(), record.GetValue(4).ToString(), record.GetValue(5).ToString(),
+                        record.GetValue(6).ToString());
+                j++;
+            }
+
+            searchResultsDataGridView.RowCount = j;
+            searchResultsDataGridView.ColumnCount = data.FieldCount;
+
+            searchResultsDataGridView.Columns[0].Name = "ID";
+            searchResultsDataGridView.Columns[1].Name = "ID_P";
+            searchResultsDataGridView.Columns[2].Name = "Фамилия";
+            searchResultsDataGridView.Columns[3].Name = "Имя";
+            searchResultsDataGridView.Columns[4].Name = "Отчество";
+            searchResultsDataGridView.Columns[5].Name = "Адрес проживания";
+            searchResultsDataGridView.Columns[6].Name = "Дата рождения";
+
+            for (int k = 0; k < j - 1; k++)
+            {
+                for (int i = 0; i < data.FieldCount; i++)
+                {
+                    searchResultsDataGridView.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(","))[i];
+                }
+            }
+
+            sqlConnection.Close();
         }
 
         private void EditTextBox_Click(object sender, EventArgs e)

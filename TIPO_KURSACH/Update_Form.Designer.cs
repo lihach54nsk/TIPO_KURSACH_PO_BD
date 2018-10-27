@@ -44,6 +44,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lastNameSearchTextBox = new System.Windows.Forms.TextBox();
             this.EditTextBox = new System.Windows.Forms.Button();
+            this.searchResultsDataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.searchResultsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchTextBox
@@ -178,11 +180,20 @@
             this.EditTextBox.UseVisualStyleBackColor = true;
             this.EditTextBox.Click += new System.EventHandler(this.EditTextBox_Click);
             // 
+            // searchResultsDataGridView
+            // 
+            this.searchResultsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.searchResultsDataGridView.Location = new System.Drawing.Point(306, 6);
+            this.searchResultsDataGridView.Name = "searchResultsDataGridView";
+            this.searchResultsDataGridView.Size = new System.Drawing.Size(480, 243);
+            this.searchResultsDataGridView.TabIndex = 30;
+            // 
             // Update_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 256);
+            this.ClientSize = new System.Drawing.Size(798, 257);
+            this.Controls.Add(this.searchResultsDataGridView);
             this.Controls.Add(this.EditTextBox);
             this.Controls.Add(this.positionSearchTextBox);
             this.Controls.Add(this.label6);
@@ -201,6 +212,7 @@
             this.Controls.Add(this.SearchTextBox);
             this.Name = "Update_Form";
             this.Text = "Update_Form";
+            ((System.ComponentModel.ISupportInitialize)(this.searchResultsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,5 +236,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox lastNameSearchTextBox;
         private System.Windows.Forms.Button EditTextBox;
+        private System.Windows.Forms.DataGridView searchResultsDataGridView;
     }
 }

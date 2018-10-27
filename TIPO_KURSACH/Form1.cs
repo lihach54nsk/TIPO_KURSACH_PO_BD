@@ -80,6 +80,7 @@ namespace TIPO_KURSACH
                     dataGridViewShow.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(","))[i];
                 }
             }
+
             sqlConnection.Close();
         }
 
