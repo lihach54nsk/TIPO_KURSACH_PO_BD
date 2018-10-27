@@ -22,7 +22,7 @@ namespace TIPO_KURSACH
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            string searchString = "SELECT * FROM dbo.Workers WHERE dbo.Workers.lastName LIKE N'{0}'";
+            string searchString = "SELECT * FROM dbo.Workers WHERE dbo.Workers.lastName LIKE N'{0}'"; // реализовать LIKE так: (вот там запрос <-)в первый раз искать по точному совпадению (дефолт), сработало - заебись, не сработало - оставить по 1 букве в начале и в конце, остальное забить _______ PROFIT!
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
             sqlConnection.Open();
