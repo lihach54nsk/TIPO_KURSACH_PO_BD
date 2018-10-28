@@ -16,5 +16,15 @@ namespace TIPO_KURSACH
         {
             InitializeComponent();
         }
+
+        private void YesButtton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NoButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

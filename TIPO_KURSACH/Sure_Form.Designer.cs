@@ -50,6 +50,7 @@
             this.YesButtton.TabIndex = 1;
             this.YesButtton.Text = "Да";
             this.YesButtton.UseVisualStyleBackColor = true;
+            this.YesButtton.Click += new System.EventHandler(this.YesButtton_Click);
             // 
             // NoButton
             // 
@@ -59,6 +60,7 @@
             this.NoButton.TabIndex = 2;
             this.NoButton.Text = "Нет";
             this.NoButton.UseVisualStyleBackColor = true;
+            this.NoButton.Click += new System.EventHandler(this.NoButton_Click);
             // 
             // Sure_Form
             // 
