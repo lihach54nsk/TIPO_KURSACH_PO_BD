@@ -1,6 +1,6 @@
 ﻿namespace TIPO_KURSACH
 {
-    partial class Clients
+    partial class Clients_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ClientsDataGridView = new System.Windows.Forms.DataGridView();
+            this.ClientsComputersDataGridView = new System.Windows.Forms.DataGridView();
             this.otchestvoClientTextBox = new System.Windows.Forms.TextBox();
             this.firstNameClientTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,16 +42,17 @@
             this.dateTimePickerBegin = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.UseComputerButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.ClientsDataGridView)).BeginInit();
+            this.ReserveComputerButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientsComputersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // ClientsDataGridView
+            // ClientsComputersDataGridView
             // 
-            this.ClientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ClientsDataGridView.Location = new System.Drawing.Point(301, 12);
-            this.ClientsDataGridView.Name = "ClientsDataGridView";
-            this.ClientsDataGridView.Size = new System.Drawing.Size(487, 188);
-            this.ClientsDataGridView.TabIndex = 0;
+            this.ClientsComputersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ClientsComputersDataGridView.Location = new System.Drawing.Point(301, 12);
+            this.ClientsComputersDataGridView.Name = "ClientsComputersDataGridView";
+            this.ClientsComputersDataGridView.Size = new System.Drawing.Size(487, 188);
+            this.ClientsComputersDataGridView.TabIndex = 0;
             // 
             // otchestvoClientTextBox
             // 
@@ -155,19 +156,29 @@
             // 
             // UseComputerButton
             // 
-            this.UseComputerButton.Location = new System.Drawing.Point(12, 177);
+            this.UseComputerButton.Location = new System.Drawing.Point(12, 175);
             this.UseComputerButton.Name = "UseComputerButton";
-            this.UseComputerButton.Size = new System.Drawing.Size(283, 23);
+            this.UseComputerButton.Size = new System.Drawing.Size(127, 23);
             this.UseComputerButton.TabIndex = 24;
-            this.UseComputerButton.Text = "Занять место";
+            this.UseComputerButton.Text = "Занять";
             this.UseComputerButton.UseVisualStyleBackColor = true;
             this.UseComputerButton.Click += new System.EventHandler(this.UseComputerButton_Click);
             // 
-            // Clients
+            // ReserveComputerButton
+            // 
+            this.ReserveComputerButton.Location = new System.Drawing.Point(155, 175);
+            this.ReserveComputerButton.Name = "ReserveComputerButton";
+            this.ReserveComputerButton.Size = new System.Drawing.Size(140, 23);
+            this.ReserveComputerButton.TabIndex = 25;
+            this.ReserveComputerButton.Text = "Бронь";
+            this.ReserveComputerButton.UseVisualStyleBackColor = true;
+            // 
+            // Clients_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 217);
+            this.ClientSize = new System.Drawing.Size(800, 210);
+            this.Controls.Add(this.ReserveComputerButton);
             this.Controls.Add(this.UseComputerButton);
             this.Controls.Add(this.dateTimePickerEnd);
             this.Controls.Add(this.dateTimePickerBegin);
@@ -181,10 +192,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lastNameClientTextBox);
-            this.Controls.Add(this.ClientsDataGridView);
-            this.Name = "Clients";
+            this.Controls.Add(this.ClientsComputersDataGridView);
+            this.Name = "Clients_Form";
             this.Text = "Clients";
-            ((System.ComponentModel.ISupportInitialize)(this.ClientsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientsComputersDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,7 +203,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView ClientsDataGridView;
+        private System.Windows.Forms.DataGridView ClientsComputersDataGridView;
         private System.Windows.Forms.TextBox otchestvoClientTextBox;
         private System.Windows.Forms.TextBox firstNameClientTextBox;
         private System.Windows.Forms.Label label3;
@@ -206,5 +217,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerBegin;
         private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
         private System.Windows.Forms.Button UseComputerButton;
+        private System.Windows.Forms.Button ReserveComputerButton;
     }
 }

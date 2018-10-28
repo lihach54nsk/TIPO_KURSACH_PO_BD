@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace TIPO_KURSACH
 {
-    public partial class Clients : Form
+    public partial class Add_Computer_Form : Form
     {
-        public Clients()
+        public Add_Computer_Form()
         {
             InitializeComponent();
-        }
-
-        private void UseComputerButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

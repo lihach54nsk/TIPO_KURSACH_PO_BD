@@ -61,11 +61,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clients.cs">
+    <Compile Include="Add_Computer_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Clients.Designer.cs">
-      <DependentUpon>Clients.cs</DependentUpon>
+    <Compile Include="Add_Computer_Form.Designer.cs">
+      <DependentUpon>Add_Computer_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clients_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients_Form.Designer.cs">
+      <DependentUpon>Clients_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Computers_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Computers_Form.Designer.cs">
+      <DependentUpon>Computers_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -81,8 +93,14 @@
     <Compile Include="Update_Form.Designer.cs">
       <DependentUpon>Update_Form.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Clients.resx">
-      <DependentUpon>Clients.cs</DependentUpon>
+    <EmbeddedResource Include="Add_Computer_Form.resx">
+      <DependentUpon>Add_Computer_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients_Form.resx">
+      <DependentUpon>Clients_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Computers_Form.resx">
+      <DependentUpon>Computers_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
