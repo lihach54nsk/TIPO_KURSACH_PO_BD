@@ -44,6 +44,7 @@
             this.button_Update = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.positionTextBox = new System.Windows.Forms.TextBox();
+            this.PositionComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             // 
             this.button_Add.Location = new System.Drawing.Point(11, 166);
             this.button_Add.Name = "button_Add";
-            this.button_Add.Size = new System.Drawing.Size(277, 61);
+            this.button_Add.Size = new System.Drawing.Size(277, 28);
             this.button_Add.TabIndex = 0;
             this.button_Add.Text = "Добавить";
             this.button_Add.UseVisualStyleBackColor = true;
@@ -139,9 +140,9 @@
             // 
             // buttonShow
             // 
-            this.buttonShow.Location = new System.Drawing.Point(317, 166);
+            this.buttonShow.Location = new System.Drawing.Point(11, 234);
             this.buttonShow.Name = "buttonShow";
-            this.buttonShow.Size = new System.Drawing.Size(577, 128);
+            this.buttonShow.Size = new System.Drawing.Size(277, 28);
             this.buttonShow.TabIndex = 12;
             this.buttonShow.Text = "Показать";
             this.buttonShow.UseVisualStyleBackColor = true;
@@ -150,16 +151,16 @@
             // dataGridViewShow
             // 
             this.dataGridViewShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewShow.Location = new System.Drawing.Point(317, 9);
+            this.dataGridViewShow.Location = new System.Drawing.Point(294, 9);
             this.dataGridViewShow.Name = "dataGridViewShow";
-            this.dataGridViewShow.Size = new System.Drawing.Size(577, 151);
+            this.dataGridViewShow.Size = new System.Drawing.Size(600, 151);
             this.dataGridViewShow.TabIndex = 13;
             // 
             // button_Update
             // 
-            this.button_Update.Location = new System.Drawing.Point(12, 233);
+            this.button_Update.Location = new System.Drawing.Point(11, 200);
             this.button_Update.Name = "button_Update";
-            this.button_Update.Size = new System.Drawing.Size(277, 61);
+            this.button_Update.Size = new System.Drawing.Size(277, 28);
             this.button_Update.TabIndex = 14;
             this.button_Update.Text = "Редактировать";
             this.button_Update.UseVisualStyleBackColor = true;
@@ -181,11 +182,20 @@
             this.positionTextBox.Size = new System.Drawing.Size(164, 20);
             this.positionTextBox.TabIndex = 16;
             // 
+            // PositionComboBox
+            // 
+            this.PositionComboBox.FormattingEnabled = true;
+            this.PositionComboBox.Location = new System.Drawing.Point(294, 166);
+            this.PositionComboBox.Name = "PositionComboBox";
+            this.PositionComboBox.Size = new System.Drawing.Size(277, 21);
+            this.PositionComboBox.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 303);
+            this.ClientSize = new System.Drawing.Size(906, 269);
+            this.Controls.Add(this.PositionComboBox);
             this.Controls.Add(this.positionTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button_Update);
@@ -228,6 +238,7 @@
         private System.Windows.Forms.Button button_Update;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox positionTextBox;
+        private System.Windows.Forms.ComboBox PositionComboBox;
     }
 }
 

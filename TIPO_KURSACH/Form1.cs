@@ -18,17 +18,62 @@ namespace TIPO_KURSACH
         public Form1()
         {
             InitializeComponent();
-        }
 
-        private void button_Add_Click(object sender, EventArgs e)
-        {
-            string queryString = "INSERT INTO dbo.Workers (Id_position, lastName, firstName, otchestvo, address, date) " +
-                "VALUES ('{0}', N'{1}', N'{2}', N'{3}', N'{4}', '{5}')";
+            string queryString = "SELECT * FROM dbo.Positions ORDER BY Id_position";
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
             sqlConnection.Open();
 
-            string insertFormat = string.Format(queryString, positionTextBox.Text, lastNameTextBox.Text, firstNameTextBox.Text, otchestvoTextBox.Text, addressTextBox.Text, date_BirthTextBox.Text);
+            SqlCommand command = new SqlCommand(queryString, sqlConnection);
+
+            var data = command.ExecuteReader();
+            string[] comboFormat = new string[100];
+            int j = 1;
+
+            while (data.Read())
+            {
+                IDataRecord record = data;
+
+                comboFormat[j - 1] = string.Format("{0}", record.GetValue(1).ToString());
+                j++;
+            }
+
+            sqlConnection.Close();
+
+            int i = 0;
+
+            while (comboFormat[i] != null)
+            {
+                PositionComboBox.Items.Add(comboFormat[i].ToString()); i++;
+            }
+        }
+                
+        private void button_Add_Click(object sender, EventArgs e)
+        {
+            string queryString = "INSERT INTO dbo.Workers (Id_position, lastName, firstName, otchestvo, address, date) " +
+                "VALUES ('{0}', N'{1}', N'{2}', N'{3}', N'{4}', '{5}')";
+            string queryPositionString = "SELECT * FROM dbo.Positions WHERE Position = N'{0}'";
+            //SELECT * FROM dbo.Positions WHERE Position = N'Администратор'
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            sqlConnection.Open();
+
+            string positionFormat = string.Format(queryPositionString, PositionComboBox.Text);
+
+            SqlCommand positionCommand = new SqlCommand(positionFormat, sqlConnection);
+
+            var data = positionCommand.ExecuteReader();
+            data.Read();
+            IDataRecord record = data;
+
+            string idPosition = string.Format("{0}", record.GetValue(0).ToString());
+
+            sqlConnection.Close();
+
+            sqlConnection.Open();
+
+            string insertFormat = string.Format(queryString, idPosition, lastNameTextBox.Text, firstNameTextBox.Text, otchestvoTextBox.Text, addressTextBox.Text, date_BirthTextBox.Text);
 
             SqlCommand command = new SqlCommand(insertFormat, sqlConnection);
 
@@ -39,6 +84,7 @@ namespace TIPO_KURSACH
         private void buttonShow_Click(object sender, EventArgs e)
         {
             string queryString = "SELECT * FROM dbo.Workers ORDER BY Id_position";
+            
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
             sqlConnection.Open();
