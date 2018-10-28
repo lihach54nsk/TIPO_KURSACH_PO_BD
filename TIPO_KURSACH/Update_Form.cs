@@ -18,6 +18,34 @@ namespace TIPO_KURSACH
         public Update_Form()
         {
             InitializeComponent();
+
+            string queryString = "SELECT * FROM dbo.Positions ORDER BY Id_position";
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            sqlConnection.Open();
+
+            SqlCommand command = new SqlCommand(queryString, sqlConnection);
+
+            var data = command.ExecuteReader();
+            string[] comboFormat = new string[100];
+            int j = 1;
+
+            while (data.Read())
+            {
+                IDataRecord record = data;
+
+                comboFormat[j - 1] = string.Format("{0}", record.GetValue(1).ToString());
+                j++;
+            }
+
+            sqlConnection.Close();
+
+            int i = 0;
+
+            while (comboFormat[i] != null)
+            {
+                PositionComboBox.Items.Add(comboFormat[i].ToString()); i++;
+            }
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -72,12 +100,34 @@ namespace TIPO_KURSACH
 
         private void EditTextBox_Click(object sender, EventArgs e)
         {
+            //string searchIDString = "SELECT * FROM dbo.Workers WHERE lastName = N'{0}'"; // поиск ид должности (старый)
             string updateString = "UPDATE dbo.Workers SET Id_position = '{0}', lastName = N'{1}', firstName = N'{2}', otchestvo = N'{3}', address = N'{4}', date = '{5}' WHERE Id_position = '1'";
+            string queryPositionString = "SELECT * FROM dbo.Positions WHERE Position = N'{0}'"; // ищу id 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
-            sqlConnection.Open();
+            /*sqlConnection.Open(); // поиск ид должности (старый)
 
-            string updateFormat = string.Format(updateString, positionSearchTextBox.Text, lastNameSearchTextBox.Text, firstNameSearchTextBox.Text, otchestvoSearchTextBox.Text, addressSearchTextBox.Text, date_BirthSearchTextBox.Text);
+
+
+            sqlConnection.Close();*/
+
+            sqlConnection.Open(); // ищу id должности
+
+            string positionFormat = string.Format(queryPositionString, PositionComboBox.Text);
+
+            SqlCommand positionCommand = new SqlCommand(positionFormat, sqlConnection);
+
+            var data = positionCommand.ExecuteReader();
+            data.Read();
+            IDataRecord record = data;
+
+            string idPosition = string.Format("{0}", record.GetValue(0).ToString());
+
+            sqlConnection.Close();//--
+
+            sqlConnection.Open();// редактирую строку с записью
+
+            string updateFormat = string.Format(updateString, idPosition, lastNameSearchTextBox.Text, firstNameSearchTextBox.Text, otchestvoSearchTextBox.Text, addressSearchTextBox.Text, date_BirthSearchTextBox.Text);
 
             SqlCommand command = new SqlCommand(updateFormat, sqlConnection);
 

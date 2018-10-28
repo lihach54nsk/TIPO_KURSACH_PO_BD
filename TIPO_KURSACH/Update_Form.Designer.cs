@@ -31,7 +31,6 @@
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SearchButton = new System.Windows.Forms.Button();
-            this.positionSearchTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.date_BirthSearchTextBox = new System.Windows.Forms.TextBox();
             this.otchestvoSearchTextBox = new System.Windows.Forms.TextBox();
@@ -45,6 +44,7 @@
             this.lastNameSearchTextBox = new System.Windows.Forms.TextBox();
             this.EditTextBox = new System.Windows.Forms.Button();
             this.searchResultsDataGridView = new System.Windows.Forms.DataGridView();
+            this.PositionComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.searchResultsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,13 +73,6 @@
             this.SearchButton.Text = "Поиск";
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
-            // 
-            // positionSearchTextBox
-            // 
-            this.positionSearchTextBox.Location = new System.Drawing.Point(124, 200);
-            this.positionSearchTextBox.Name = "positionSearchTextBox";
-            this.positionSearchTextBox.Size = new System.Drawing.Size(164, 20);
-            this.positionSearchTextBox.TabIndex = 28;
             // 
             // label6
             // 
@@ -188,14 +181,22 @@
             this.searchResultsDataGridView.Size = new System.Drawing.Size(480, 243);
             this.searchResultsDataGridView.TabIndex = 30;
             // 
+            // PositionComboBox
+            // 
+            this.PositionComboBox.FormattingEnabled = true;
+            this.PositionComboBox.Location = new System.Drawing.Point(124, 199);
+            this.PositionComboBox.Name = "PositionComboBox";
+            this.PositionComboBox.Size = new System.Drawing.Size(164, 21);
+            this.PositionComboBox.TabIndex = 31;
+            // 
             // Update_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 257);
+            this.Controls.Add(this.PositionComboBox);
             this.Controls.Add(this.searchResultsDataGridView);
             this.Controls.Add(this.EditTextBox);
-            this.Controls.Add(this.positionSearchTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.date_BirthSearchTextBox);
             this.Controls.Add(this.otchestvoSearchTextBox);
@@ -223,7 +224,6 @@
         private System.Windows.Forms.TextBox SearchTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button SearchButton;
-        private System.Windows.Forms.TextBox positionSearchTextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox date_BirthSearchTextBox;
         private System.Windows.Forms.TextBox otchestvoSearchTextBox;
@@ -237,5 +237,6 @@
         private System.Windows.Forms.TextBox lastNameSearchTextBox;
         private System.Windows.Forms.Button EditTextBox;
         private System.Windows.Forms.DataGridView searchResultsDataGridView;
+        private System.Windows.Forms.ComboBox PositionComboBox;
     }
 }

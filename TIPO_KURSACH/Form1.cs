@@ -47,13 +47,12 @@ namespace TIPO_KURSACH
                 PositionComboBox.Items.Add(comboFormat[i].ToString()); i++;
             }
         }
-                
+
         private void button_Add_Click(object sender, EventArgs e)
         {
             string queryString = "INSERT INTO dbo.Workers (Id_position, lastName, firstName, otchestvo, address, date) " +
                 "VALUES ('{0}', N'{1}', N'{2}', N'{3}', N'{4}', '{5}')";
             string queryPositionString = "SELECT * FROM dbo.Positions WHERE Position = N'{0}'";
-            //SELECT * FROM dbo.Positions WHERE Position = N'Администратор'
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
@@ -84,7 +83,7 @@ namespace TIPO_KURSACH
         private void buttonShow_Click(object sender, EventArgs e)
         {
             string queryString = "SELECT * FROM dbo.Workers ORDER BY Id_position";
-            
+
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
             sqlConnection.Open();

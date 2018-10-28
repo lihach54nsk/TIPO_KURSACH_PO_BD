@@ -43,7 +43,6 @@
             this.dataGridViewShow = new System.Windows.Forms.DataGridView();
             this.button_Update = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.positionTextBox = new System.Windows.Forms.TextBox();
             this.PositionComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShow)).BeginInit();
             this.SuspendLayout();
@@ -175,19 +174,12 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "Должность: ";
             // 
-            // positionTextBox
-            // 
-            this.positionTextBox.Location = new System.Drawing.Point(124, 140);
-            this.positionTextBox.Name = "positionTextBox";
-            this.positionTextBox.Size = new System.Drawing.Size(164, 20);
-            this.positionTextBox.TabIndex = 16;
-            // 
             // PositionComboBox
             // 
             this.PositionComboBox.FormattingEnabled = true;
-            this.PositionComboBox.Location = new System.Drawing.Point(294, 166);
+            this.PositionComboBox.Location = new System.Drawing.Point(124, 139);
             this.PositionComboBox.Name = "PositionComboBox";
-            this.PositionComboBox.Size = new System.Drawing.Size(277, 21);
+            this.PositionComboBox.Size = new System.Drawing.Size(164, 21);
             this.PositionComboBox.TabIndex = 17;
             // 
             // Form1
@@ -196,7 +188,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 269);
             this.Controls.Add(this.PositionComboBox);
-            this.Controls.Add(this.positionTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button_Update);
             this.Controls.Add(this.dataGridViewShow);
@@ -237,7 +228,6 @@
         private System.Windows.Forms.DataGridView dataGridViewShow;
         private System.Windows.Forms.Button button_Update;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox positionTextBox;
         private System.Windows.Forms.ComboBox PositionComboBox;
     }
 }
