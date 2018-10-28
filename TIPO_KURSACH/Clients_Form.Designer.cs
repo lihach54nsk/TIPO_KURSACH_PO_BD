@@ -172,6 +172,7 @@
             this.ReserveComputerButton.TabIndex = 25;
             this.ReserveComputerButton.Text = "Бронь";
             this.ReserveComputerButton.UseVisualStyleBackColor = true;
+            this.ReserveComputerButton.Click += new System.EventHandler(this.ReserveComputerButton_Click);
             // 
             // Clients_Form
             // 

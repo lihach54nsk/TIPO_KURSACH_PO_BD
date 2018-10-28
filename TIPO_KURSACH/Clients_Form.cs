@@ -21,5 +21,10 @@ namespace TIPO_KURSACH
         {
 
         }
+
+        private void ReserveComputerButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

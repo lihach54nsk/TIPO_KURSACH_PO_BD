@@ -104,6 +104,7 @@
             this.AddPerefButton.TabIndex = 6;
             this.AddPerefButton.Text = "Добавить периферию";
             this.AddPerefButton.UseVisualStyleBackColor = true;
+            this.AddPerefButton.Click += new System.EventHandler(this.AddPerefButton_Click);
             // 
             // AddPC_Button
             // 
@@ -113,6 +114,7 @@
             this.AddPC_Button.TabIndex = 7;
             this.AddPC_Button.Text = "Добавить комплектующие";
             this.AddPC_Button.UseVisualStyleBackColor = true;
+            this.AddPC_Button.Click += new System.EventHandler(this.AddPC_Button_Click);
             // 
             // AddPS_Button
             // 
@@ -122,6 +124,7 @@
             this.AddPS_Button.TabIndex = 8;
             this.AddPS_Button.Text = "Добавить ПО";
             this.AddPS_Button.UseVisualStyleBackColor = true;
+            this.AddPS_Button.Click += new System.EventHandler(this.AddPS_Button_Click);
             // 
             // ChangePerefButton
             // 
@@ -131,6 +134,7 @@
             this.ChangePerefButton.TabIndex = 9;
             this.ChangePerefButton.Text = "Редактировать периферию";
             this.ChangePerefButton.UseVisualStyleBackColor = true;
+            this.ChangePerefButton.Click += new System.EventHandler(this.ChangePerefButton_Click);
             // 
             // ChangePC_Button
             // 
@@ -140,6 +144,7 @@
             this.ChangePC_Button.TabIndex = 10;
             this.ChangePC_Button.Text = "Редактирвать комплектующие";
             this.ChangePC_Button.UseVisualStyleBackColor = true;
+            this.ChangePC_Button.Click += new System.EventHandler(this.ChangePC_Button_Click);
             // 
             // ChangePS_Button
             // 
@@ -149,6 +154,7 @@
             this.ChangePS_Button.TabIndex = 11;
             this.ChangePS_Button.Text = "Редактировать ПО";
             this.ChangePS_Button.UseVisualStyleBackColor = true;
+            this.ChangePS_Button.Click += new System.EventHandler(this.ChangePS_Button_Click);
             // 
             // DeletePerefButton
             // 
@@ -158,6 +164,7 @@
             this.DeletePerefButton.TabIndex = 12;
             this.DeletePerefButton.Text = "Удалить периферию";
             this.DeletePerefButton.UseVisualStyleBackColor = true;
+            this.DeletePerefButton.Click += new System.EventHandler(this.DeletePerefButton_Click);
             // 
             // DeletePC_Button
             // 
@@ -167,6 +174,7 @@
             this.DeletePC_Button.TabIndex = 13;
             this.DeletePC_Button.Text = "Удалить комплектующие";
             this.DeletePC_Button.UseVisualStyleBackColor = true;
+            this.DeletePC_Button.Click += new System.EventHandler(this.DeletePC_Button_Click);
             // 
             // DeletePS_Button
             // 
@@ -176,6 +184,7 @@
             this.DeletePS_Button.TabIndex = 14;
             this.DeletePS_Button.Text = "Удалить ПО";
             this.DeletePS_Button.UseVisualStyleBackColor = true;
+            this.DeletePS_Button.Click += new System.EventHandler(this.DeletePS_Button_Click);
             // 
             // Add_Computer_Form
             // 
