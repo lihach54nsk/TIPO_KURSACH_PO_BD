@@ -59,7 +59,7 @@
             this.PerefComboBox.FormattingEnabled = true;
             this.PerefComboBox.Location = new System.Drawing.Point(115, 6);
             this.PerefComboBox.Name = "PerefComboBox";
-            this.PerefComboBox.Size = new System.Drawing.Size(121, 21);
+            this.PerefComboBox.Size = new System.Drawing.Size(418, 21);
             this.PerefComboBox.TabIndex = 1;
             // 
             // label2
@@ -85,7 +85,7 @@
             this.PC_ComboBox.FormattingEnabled = true;
             this.PC_ComboBox.Location = new System.Drawing.Point(115, 33);
             this.PC_ComboBox.Name = "PC_ComboBox";
-            this.PC_ComboBox.Size = new System.Drawing.Size(121, 21);
+            this.PC_ComboBox.Size = new System.Drawing.Size(418, 21);
             this.PC_ComboBox.TabIndex = 4;
             // 
             // PS_ComboBox
@@ -93,7 +93,7 @@
             this.PS_ComboBox.FormattingEnabled = true;
             this.PS_ComboBox.Location = new System.Drawing.Point(115, 61);
             this.PS_ComboBox.Name = "PS_ComboBox";
-            this.PS_ComboBox.Size = new System.Drawing.Size(121, 21);
+            this.PS_ComboBox.Size = new System.Drawing.Size(418, 21);
             this.PS_ComboBox.TabIndex = 5;
             // 
             // AddPerefButton

@@ -43,6 +43,8 @@
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.UseComputerButton = new System.Windows.Forms.Button();
             this.ReserveComputerButton = new System.Windows.Forms.Button();
+            this.CheckButton = new System.Windows.Forms.Button();
+            this.DeleteReserveComputerButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsComputersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +53,7 @@
             this.ClientsComputersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ClientsComputersDataGridView.Location = new System.Drawing.Point(301, 12);
             this.ClientsComputersDataGridView.Name = "ClientsComputersDataGridView";
-            this.ClientsComputersDataGridView.Size = new System.Drawing.Size(487, 188);
+            this.ClientsComputersDataGridView.Size = new System.Drawing.Size(487, 215);
             this.ClientsComputersDataGridView.TabIndex = 0;
             // 
             // otchestvoClientTextBox
@@ -156,7 +158,7 @@
             // 
             // UseComputerButton
             // 
-            this.UseComputerButton.Location = new System.Drawing.Point(12, 175);
+            this.UseComputerButton.Location = new System.Drawing.Point(12, 177);
             this.UseComputerButton.Name = "UseComputerButton";
             this.UseComputerButton.Size = new System.Drawing.Size(127, 23);
             this.UseComputerButton.TabIndex = 24;
@@ -166,19 +168,39 @@
             // 
             // ReserveComputerButton
             // 
-            this.ReserveComputerButton.Location = new System.Drawing.Point(155, 175);
+            this.ReserveComputerButton.Location = new System.Drawing.Point(145, 177);
             this.ReserveComputerButton.Name = "ReserveComputerButton";
-            this.ReserveComputerButton.Size = new System.Drawing.Size(140, 23);
+            this.ReserveComputerButton.Size = new System.Drawing.Size(150, 23);
             this.ReserveComputerButton.TabIndex = 25;
             this.ReserveComputerButton.Text = "Бронь";
             this.ReserveComputerButton.UseVisualStyleBackColor = true;
             this.ReserveComputerButton.Click += new System.EventHandler(this.ReserveComputerButton_Click);
             // 
+            // CheckButton
+            // 
+            this.CheckButton.Location = new System.Drawing.Point(12, 206);
+            this.CheckButton.Name = "CheckButton";
+            this.CheckButton.Size = new System.Drawing.Size(127, 23);
+            this.CheckButton.TabIndex = 26;
+            this.CheckButton.Text = "Счёт";
+            this.CheckButton.UseVisualStyleBackColor = true;
+            // 
+            // DeleteReserveComputerButton
+            // 
+            this.DeleteReserveComputerButton.Location = new System.Drawing.Point(145, 206);
+            this.DeleteReserveComputerButton.Name = "DeleteReserveComputerButton";
+            this.DeleteReserveComputerButton.Size = new System.Drawing.Size(150, 23);
+            this.DeleteReserveComputerButton.TabIndex = 27;
+            this.DeleteReserveComputerButton.Text = "Бронь";
+            this.DeleteReserveComputerButton.UseVisualStyleBackColor = true;
+            // 
             // Clients_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 210);
+            this.ClientSize = new System.Drawing.Size(800, 239);
+            this.Controls.Add(this.DeleteReserveComputerButton);
+            this.Controls.Add(this.CheckButton);
             this.Controls.Add(this.ReserveComputerButton);
             this.Controls.Add(this.UseComputerButton);
             this.Controls.Add(this.dateTimePickerEnd);
@@ -219,5 +241,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
         private System.Windows.Forms.Button UseComputerButton;
         private System.Windows.Forms.Button ReserveComputerButton;
+        private System.Windows.Forms.Button CheckButton;
+        private System.Windows.Forms.Button DeleteReserveComputerButton;
     }
 }
