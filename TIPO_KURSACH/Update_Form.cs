@@ -100,16 +100,24 @@ namespace TIPO_KURSACH
 
         private void EditTextBox_Click(object sender, EventArgs e)
         {
-            //string searchIDString = "SELECT * FROM dbo.Workers WHERE lastName = N'{0}'"; // поиск ид должности (старый)
-            string updateString = "UPDATE dbo.Workers SET Id_position = '{0}', lastName = N'{1}', firstName = N'{2}', otchestvo = N'{3}', address = N'{4}', date = '{5}' WHERE Id_position = '1'";
+            string searchIDString = "SELECT * FROM dbo.Workers WHERE lastName = N'{0}'"; // поиск ид должности (старый)
+            string updateString = "UPDATE dbo.Workers SET Id_position = '{0}', lastName = N'{1}', firstName = N'{2}', otchestvo = N'{3}', address = N'{4}', date = '{5}' WHERE Id_position = '{6}'";
             string queryPositionString = "SELECT * FROM dbo.Positions WHERE Position = N'{0}'"; // ищу id 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
-            /*sqlConnection.Open(); // поиск ид должности (старый)
+            sqlConnection.Open(); // поиск ид должности (старый)
 
+            string searchIDFormat = string.Format(searchIDString, SearchTextBox.Text);
 
+            SqlCommand searchIDCommand = new SqlCommand(searchIDFormat, sqlConnection);
 
-            sqlConnection.Close();*/
+            var dataOld = searchIDCommand.ExecuteReader();
+            dataOld.Read();
+            IDataRecord recordOld = dataOld;
+
+            string IDPositionOld = string.Format("{0}", recordOld.GetValue(1).ToString());
+
+            sqlConnection.Close();
 
             sqlConnection.Open(); // ищу id должности
 
@@ -127,7 +135,7 @@ namespace TIPO_KURSACH
 
             sqlConnection.Open();// редактирую строку с записью
 
-            string updateFormat = string.Format(updateString, idPosition, lastNameSearchTextBox.Text, firstNameSearchTextBox.Text, otchestvoSearchTextBox.Text, addressSearchTextBox.Text, date_BirthSearchTextBox.Text);
+            string updateFormat = string.Format(updateString, idPosition, lastNameSearchTextBox.Text, firstNameSearchTextBox.Text, otchestvoSearchTextBox.Text, addressSearchTextBox.Text, date_BirthSearchTextBox.Text, IDPositionOld);
 
             SqlCommand command = new SqlCommand(updateFormat, sqlConnection);
 
