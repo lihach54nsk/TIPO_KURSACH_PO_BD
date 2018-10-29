@@ -145,6 +145,10 @@ namespace TIPO_KURSACH
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            //  Sure_Form sure_Form = new Sure_Form();
+           // sure_Form
+            //if (sure_Form.Sure())
+            // {
             string queryString = "DELETE FROM dbo.Workers WHERE lastName = N'{0}'";
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
@@ -157,6 +161,8 @@ namespace TIPO_KURSACH
             sqlCommand.ExecuteNonQuery();
 
             sqlConnection.Close();
+            //}
+            //else return;
         }
     }
 }

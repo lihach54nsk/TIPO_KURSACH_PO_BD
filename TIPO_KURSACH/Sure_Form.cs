@@ -17,14 +17,22 @@ namespace TIPO_KURSACH
             InitializeComponent();
         }
 
+        bool question = false;
+
         private void YesButtton_Click(object sender, EventArgs e)
         {
-
+            question = true;
         }
 
         private void NoButton_Click(object sender, EventArgs e)
         {
+            question = false;
+        }
 
+        public bool Sure()
+        {
+
+            return question;
         }
     }
 }
