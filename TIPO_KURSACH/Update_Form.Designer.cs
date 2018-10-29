@@ -45,6 +45,7 @@
             this.EditTextBox = new System.Windows.Forms.Button();
             this.searchResultsDataGridView = new System.Windows.Forms.DataGridView();
             this.PositionComboBox = new System.Windows.Forms.ComboBox();
+            this.DeleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.searchResultsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             // 
             this.SearchTextBox.Location = new System.Drawing.Point(63, 6);
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(100, 20);
+            this.SearchTextBox.Size = new System.Drawing.Size(225, 20);
             this.SearchTextBox.TabIndex = 0;
             // 
             // label1
@@ -176,9 +177,9 @@
             // searchResultsDataGridView
             // 
             this.searchResultsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.searchResultsDataGridView.Location = new System.Drawing.Point(306, 6);
+            this.searchResultsDataGridView.Location = new System.Drawing.Point(294, 6);
             this.searchResultsDataGridView.Name = "searchResultsDataGridView";
-            this.searchResultsDataGridView.Size = new System.Drawing.Size(480, 243);
+            this.searchResultsDataGridView.Size = new System.Drawing.Size(492, 243);
             this.searchResultsDataGridView.TabIndex = 30;
             // 
             // PositionComboBox
@@ -189,11 +190,22 @@
             this.PositionComboBox.Size = new System.Drawing.Size(164, 21);
             this.PositionComboBox.TabIndex = 31;
             // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(169, 32);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(119, 23);
+            this.DeleteButton.TabIndex = 32;
+            this.DeleteButton.Text = "Удалить";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
             // Update_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 257);
+            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.PositionComboBox);
             this.Controls.Add(this.searchResultsDataGridView);
             this.Controls.Add(this.EditTextBox);
@@ -238,5 +250,6 @@
         private System.Windows.Forms.Button EditTextBox;
         private System.Windows.Forms.DataGridView searchResultsDataGridView;
         private System.Windows.Forms.ComboBox PositionComboBox;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }

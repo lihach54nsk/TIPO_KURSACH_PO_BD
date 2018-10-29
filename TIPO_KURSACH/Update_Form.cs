@@ -142,5 +142,21 @@ namespace TIPO_KURSACH
             command.ExecuteNonQuery();
             sqlConnection.Close();
         }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            string queryString = "DELETE FROM dbo.Workers WHERE lastName = N'{0}'";
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            sqlConnection.Open();
+
+            string deleteFormat = string.Format(queryString, SearchTextBox.Text);
+
+            SqlCommand sqlCommand = new SqlCommand(deleteFormat, sqlConnection);
+
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+        }
     }
 }
