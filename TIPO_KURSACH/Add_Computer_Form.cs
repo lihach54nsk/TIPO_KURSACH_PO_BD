@@ -46,12 +46,50 @@ namespace TIPO_KURSACH
 
         private void AddPC_Button_Click(object sender, EventArgs e)
         {
+            string queryString = "INSERT INTO dbo.State_of_PC (PC_Data) VALUES (N'{0}')";
 
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            Add_Change_Form add_Change_Form = new Add_Change_Form();
+
+            sqlConnection.Open();
+
+            if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
+            {
+                string addFormat = string.Format(queryString, add_Change_Form.Data());
+                add_Change_Form.Dispose();
+
+                SqlCommand command = new SqlCommand(addFormat, sqlConnection);
+
+                command.ExecuteNonQuery();
+            }
+            else add_Change_Form.Dispose();
+
+            sqlConnection.Close();
         }
 
         private void AddPS_Button_Click(object sender, EventArgs e)
         {
+            string queryString = "INSERT INTO dbo.state_od_PS (PS) VALUES (N'{0}')";
 
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            Add_Change_Form add_Change_Form = new Add_Change_Form();
+
+            sqlConnection.Open();
+
+            if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
+            {
+                string addFormat = string.Format(queryString, add_Change_Form.Data());
+                add_Change_Form.Dispose();
+
+                SqlCommand command = new SqlCommand(addFormat, sqlConnection);
+
+                command.ExecuteNonQuery();
+            }
+            else add_Change_Form.Dispose();
+
+            sqlConnection.Close();
         }
 
         private void ChangePerefButton_Click(object sender, EventArgs e)
