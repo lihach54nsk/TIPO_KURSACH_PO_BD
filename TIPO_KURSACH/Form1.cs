@@ -77,6 +77,7 @@ namespace TIPO_KURSACH
             SqlCommand command = new SqlCommand(insertFormat, sqlConnection);
 
             command.ExecuteNonQuery();
+
             sqlConnection.Close();
         }
 

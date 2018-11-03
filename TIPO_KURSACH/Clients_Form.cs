@@ -26,5 +26,15 @@ namespace TIPO_KURSACH
         {
 
         }
+
+        private void CheckButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteReserveComputerButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -19,7 +19,9 @@ namespace TIPO_KURSACH
 
         private void AddComputerButton_Click(object sender, EventArgs e)
         {
+            Add_Computer_Form add_Computer_Form = new Add_Computer_Form();
 
+            add_Computer_Form.Show();
         }
 
         private void ChangeDataComputerButton_Click(object sender, EventArgs e)

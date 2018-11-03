@@ -184,6 +184,7 @@
             this.CheckButton.TabIndex = 26;
             this.CheckButton.Text = "Счёт";
             this.CheckButton.UseVisualStyleBackColor = true;
+            this.CheckButton.Click += new System.EventHandler(this.CheckButton_Click);
             // 
             // DeleteReserveComputerButton
             // 
@@ -191,8 +192,9 @@
             this.DeleteReserveComputerButton.Name = "DeleteReserveComputerButton";
             this.DeleteReserveComputerButton.Size = new System.Drawing.Size(150, 23);
             this.DeleteReserveComputerButton.TabIndex = 27;
-            this.DeleteReserveComputerButton.Text = "Бронь";
+            this.DeleteReserveComputerButton.Text = "Снять бронь";
             this.DeleteReserveComputerButton.UseVisualStyleBackColor = true;
+            this.DeleteReserveComputerButton.Click += new System.EventHandler(this.DeleteReserveComputerButton_Click);
             // 
             // Clients_Form
             // 
