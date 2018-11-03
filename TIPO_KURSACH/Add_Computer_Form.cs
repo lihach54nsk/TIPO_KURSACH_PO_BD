@@ -18,6 +18,78 @@ namespace TIPO_KURSACH
         public Add_Computer_Form()
         {
             InitializeComponent();
+
+            string PerefString = "SELECT * FROM dbo.Peref ORDER BY Id_Peref";
+            string PCString = "SELECT * FROM dbo.State_of_PC ORDER BY Id_PC";
+            string PSString = "SELECT * FROM dbo.state_of_PS ORDER BY Id_PS";
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            sqlConnection.Open();
+
+            SqlCommand Perefcommand = new SqlCommand(PerefString, sqlConnection);
+
+            var data = Perefcommand.ExecuteReader();
+            string[] comboFormatPeref = new string[100];
+            int j = 1;
+
+            while (data.Read())
+            {
+                IDataRecord record = data;
+                comboFormatPeref[j - 1] = string.Format("{0}", record.GetValue(1).ToString());
+                j++;
+            }
+
+            sqlConnection.Close();
+
+            int i = 0;
+
+            while (comboFormatPeref[i] != null)
+            {
+                PerefComboBox.Items.Add(comboFormatPeref[i].ToString()); i++;
+            }            
+
+            j = 1;
+            i = 0;
+            string[] comboFormatPC = new string[100];
+
+            sqlConnection.Open();
+
+            SqlCommand commandPC = new SqlCommand(PCString, sqlConnection);
+
+            data = commandPC.ExecuteReader();
+
+            while (data.Read())
+            {
+                IDataRecord record = data;
+                comboFormatPC[j - 1] = string.Format("{0}", record.GetValue(1).ToString());
+                j++;
+            }
+
+            sqlConnection.Close();
+
+            while (comboFormatPC[i] != null)
+            {
+                PC_ComboBox.Items.Add(comboFormatPC[i].ToString());i++;
+            }
+
+            j = 1;
+            i = 0;
+            string[] comboFormatPS = new string[100];
+
+            sqlConnection.Open();
+
+            SqlCommand commandPS = new SqlCommand(PSString, sqlConnection);
+
+            data = commandPS.ExecuteReader();
+
+            while (data.Read())
+            {
+                IDataRecord record = data;
+                comboFormatPS[j - 1] = string.Format("{0}", record.GetValue(1).ToString());
+                j++;
+            }
+
+            sqlConnection.Close();
         }
 
         private void AddPerefButton_Click(object sender, EventArgs e)
