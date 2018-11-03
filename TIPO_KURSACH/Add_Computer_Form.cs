@@ -100,6 +100,7 @@ namespace TIPO_KURSACH
         private void AddPerefButton_Click(object sender, EventArgs e)
         {
             string queryString = "INSERT INTO dbo.Peref (Peref_Data) VALUES (N'{0}')";
+            string repeatString = "SELECT * FROM dbo.Peref WHERE Peref_Data = N'{0}'"; // ищем повторы
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
@@ -109,12 +110,29 @@ namespace TIPO_KURSACH
 
             if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
             {
-                string addFormat = string.Format(queryString, add_Change_Form.Data());
-                add_Change_Form.Dispose();
+                string searchFormat = string.Format(repeatString, add_Change_Form.Data());
 
-                SqlCommand command = new SqlCommand(addFormat, sqlConnection);
+                SqlCommand searchRepeatCommand = new SqlCommand(searchFormat, sqlConnection);
 
-                command.ExecuteNonQuery();
+                var search = searchRepeatCommand.ExecuteReader();
+
+                if (search.Read())
+                {
+                    Exist_Form exist_Form = new Exist_Form();
+                    if (exist_Form.ShowDialog(this) == DialogResult.OK)
+                    { exist_Form.Dispose(); sqlConnection.Close(); }
+                }
+                else
+                {
+                    sqlConnection.Close();
+                    sqlConnection.Open();
+                    string addFormat = string.Format(queryString, add_Change_Form.Data());
+                    add_Change_Form.Dispose();
+
+                    SqlCommand command = new SqlCommand(addFormat, sqlConnection);
+
+                    command.ExecuteNonQuery();
+                }
             }
             else add_Change_Form.Dispose();
 
@@ -124,6 +142,7 @@ namespace TIPO_KURSACH
         private void AddPC_Button_Click(object sender, EventArgs e)
         {
             string queryString = "INSERT INTO dbo.State_of_PC (PC_Data) VALUES (N'{0}')";
+            string repeatString = "SELECT * FROM dbo.State_of_PC WHERE PC_Data = N'{0}'";
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
@@ -133,12 +152,29 @@ namespace TIPO_KURSACH
 
             if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
             {
-                string addFormat = string.Format(queryString, add_Change_Form.Data());
-                add_Change_Form.Dispose();
+                string searchFormat = string.Format(repeatString, add_Change_Form.Data());
 
-                SqlCommand command = new SqlCommand(addFormat, sqlConnection);
+                SqlCommand searchRepeatCommand = new SqlCommand(searchFormat, sqlConnection);
 
-                command.ExecuteNonQuery();
+                var search = searchRepeatCommand.ExecuteReader();
+
+                if (search.Read())
+                {
+                    Exist_Form exist_Form = new Exist_Form();
+                    if (exist_Form.ShowDialog(this) == DialogResult.OK)
+                    { exist_Form.Dispose(); sqlConnection.Close(); }
+                }
+                else
+                {
+                    sqlConnection.Close();
+                    sqlConnection.Open();
+                    string addFormat = string.Format(queryString, add_Change_Form.Data());
+                    add_Change_Form.Dispose();
+
+                    SqlCommand command = new SqlCommand(addFormat, sqlConnection);
+
+                    command.ExecuteNonQuery();
+                }
             }
             else add_Change_Form.Dispose();
 
@@ -148,6 +184,7 @@ namespace TIPO_KURSACH
         private void AddPS_Button_Click(object sender, EventArgs e)
         {
             string queryString = "INSERT INTO dbo.state_of_PS (PS) VALUES (N'{0}')";
+            string repeatString = "SELECT * FROM dbo.state_of_PS WHERE PS = N'{0}'";
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
@@ -157,12 +194,31 @@ namespace TIPO_KURSACH
 
             if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
             {
-                string addFormat = string.Format(queryString, add_Change_Form.Data());
-                add_Change_Form.Dispose();
+                string searchFormat = string.Format(repeatString, add_Change_Form.Data());
 
-                SqlCommand command = new SqlCommand(addFormat, sqlConnection);
+                SqlCommand searchRepeatCommand = new SqlCommand(searchFormat, sqlConnection);
 
-                command.ExecuteNonQuery();
+                var search = searchRepeatCommand.ExecuteReader();
+
+                if (search.Read())
+                {
+                    Exist_Form exist_Form = new Exist_Form();
+                    if (exist_Form.ShowDialog(this) == DialogResult.OK)
+                    {
+                        exist_Form.Dispose(); sqlConnection.Close();
+                    }
+                }
+                else
+                {
+                    sqlConnection.Close();
+                    sqlConnection.Open();
+                    string addFormat = string.Format(queryString, add_Change_Form.Data());
+                    add_Change_Form.Dispose();
+
+                    SqlCommand command = new SqlCommand(addFormat, sqlConnection);
+
+                    command.ExecuteNonQuery();
+                }
             }
             else add_Change_Form.Dispose();
 
@@ -171,7 +227,9 @@ namespace TIPO_KURSACH
 
         private void ChangePerefButton_Click(object sender, EventArgs e)
         {
+            string SearchIDString = "SELECT * FROM dbo.Peref WHERE Peref_data = N'{0}'";
 
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
         }
 
         private void ChangePC_Button_Click(object sender, EventArgs e)
