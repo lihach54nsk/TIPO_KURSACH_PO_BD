@@ -228,8 +228,38 @@ namespace TIPO_KURSACH
         private void ChangePerefButton_Click(object sender, EventArgs e)
         {
             string SearchIDString = "SELECT * FROM dbo.Peref WHERE Peref_data = N'{0}'";
+            string updateString = "UPDATE dbo.Peref SET Peref_Data = N'{0}' WHERE Id_Peref = '{1}'";
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            string searchString = string.Format(SearchIDString, PerefComboBox.Text);
+
+            sqlConnection.Open();
+
+            SqlCommand searchIDCommand = new SqlCommand(searchString, sqlConnection);
+
+            var data = searchIDCommand.ExecuteReader();
+            data.Read();
+            IDataRecord record = data;
+
+            string IDString = string.Format("{0}", record.GetValue(0).ToString());
+
+            sqlConnection.Close();
+
+            sqlConnection.Open();
+
+            Add_Change_Form add_Change_Form = new Add_Change_Form();
+
+            if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
+            {
+                string PerefFormat = string.Format(updateString, add_Change_Form.Data(), IDString);
+
+                SqlCommand PerefCommand = new SqlCommand(PerefFormat, sqlConnection);
+
+                PerefCommand.ExecuteNonQuery();
+            }
+
+            sqlConnection.Close();
         }
 
         private void ChangePC_Button_Click(object sender, EventArgs e)
