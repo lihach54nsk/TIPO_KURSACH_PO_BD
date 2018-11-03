@@ -338,17 +338,68 @@ namespace TIPO_KURSACH
 
         private void DeletePerefButton_Click(object sender, EventArgs e)
         {
+            Sure_Form sure_Form = new Sure_Form();
 
+            if (sure_Form.ShowDialog() == DialogResult.Yes)
+            {
+                string deleteString = "DELETE FROM dbo.Peref WHERE Peref_data = N'{0}'";
+
+                SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+                string deleteFormat = string.Format(deleteString, PerefComboBox.Text);
+
+                sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(deleteFormat, sqlConnection);
+
+                sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+            }
         }
 
         private void DeletePC_Button_Click(object sender, EventArgs e)
         {
+            Sure_Form sure_Form = new Sure_Form();
 
+            if (sure_Form.ShowDialog() == DialogResult.Yes)
+            {
+                string deleteString = "DELETE FROM dbo.State_of_PC WHERE PC_Data = N'{0}'";
+
+                SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+                string deleteFormat = string.Format(deleteString, PC_ComboBox.Text);
+
+                sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(deleteFormat, sqlConnection);
+
+                sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+            }
         }
 
         private void DeletePS_Button_Click(object sender, EventArgs e)
         {
+            Sure_Form sure_Form = new Sure_Form();
 
+            if (sure_Form.ShowDialog() == DialogResult.Yes)
+            {
+                string deleteString = "DELETE FROM dbo.state_of_PS WHERE PS = N'{0}'";
+
+                SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+                string deleteFormat = string.Format(deleteString, PS_ComboBox.Text);
+
+                sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(deleteFormat, sqlConnection);
+
+                sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+            }
         }
     }
 }

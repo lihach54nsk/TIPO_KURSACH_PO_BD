@@ -44,6 +44,7 @@
             // 
             // YesButtton
             // 
+            this.YesButtton.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.YesButtton.Location = new System.Drawing.Point(10, 29);
             this.YesButtton.Name = "YesButtton";
             this.YesButtton.Size = new System.Drawing.Size(75, 23);
@@ -54,6 +55,7 @@
             // 
             // NoButton
             // 
+            this.NoButton.DialogResult = System.Windows.Forms.DialogResult.No;
             this.NoButton.Location = new System.Drawing.Point(91, 29);
             this.NoButton.Name = "NoButton";
             this.NoButton.Size = new System.Drawing.Size(75, 23);
