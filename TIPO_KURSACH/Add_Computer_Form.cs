@@ -401,5 +401,68 @@ namespace TIPO_KURSACH
                 sqlConnection.Close();
             }
         }
+
+        private void AddComputerButton_Click(object sender, EventArgs e)
+        {
+            string addComputerString = "INSERT INTO dbo.PC_O (Id_Peref, Id_PC, Id_PS) VALUES ('{0}', '{1}', '{2}')";
+
+            string SearchIDPerefString = "SELECT * FROM dbo.Peref WHERE Peref_data = N'{0}'";
+            string SearchIDPCString = "SELECT * FROM dbo.State_of_PC WHERE PC_data = N'{0}'";
+            string SearchIDPSString = "SELECT * FROM dbo.state_of_PS WHERE PS = N'{0}'";
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);           
+
+            sqlConnection.Open();
+
+            string searchString = string.Format(SearchIDPerefString, PerefComboBox.Text);
+
+            SqlCommand searchIDPerefCommand = new SqlCommand(searchString, sqlConnection);
+
+            var data = searchIDPerefCommand.ExecuteReader();
+            data.Read();
+            IDataRecord record = data;
+
+            string Id_Peref = string.Format("{0}", record.GetValue(0).ToString());
+
+            sqlConnection.Close();
+
+            sqlConnection.Open();
+
+            searchString = string.Format(SearchIDPCString, PC_ComboBox.Text);
+
+            SqlCommand searchIDPCCommand = new SqlCommand(searchString, sqlConnection);
+
+            data = searchIDPCCommand.ExecuteReader();
+            data.Read();
+            record = data;
+
+            string Id_PC = string.Format("{0}", record.GetValue(0).ToString());
+
+            sqlConnection.Close();
+
+            sqlConnection.Open();
+
+            searchString = string.Format(SearchIDPSString, PS_ComboBox.Text);
+
+            SqlCommand searchIDPSCommand = new SqlCommand(searchString, sqlConnection);
+
+            data = searchIDPSCommand.ExecuteReader();
+            data.Read();
+            record = data;
+
+            string Id_PS = string.Format("{0}", record.GetValue(0).ToString());
+
+            sqlConnection.Close();
+
+            string insertFormat = string.Format(addComputerString, Id_Peref, Id_PC, Id_PS);
+
+            sqlConnection.Open();
+
+            SqlCommand insertCommand = new SqlCommand(insertFormat, sqlConnection);
+
+            insertCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+        }
     }
 }

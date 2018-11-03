@@ -33,5 +33,10 @@ namespace TIPO_KURSACH
         {
 
         }
+
+        private void ShowComputersButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

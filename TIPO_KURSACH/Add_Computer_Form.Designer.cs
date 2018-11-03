@@ -43,6 +43,7 @@
             this.DeletePerefButton = new System.Windows.Forms.Button();
             this.DeletePC_Button = new System.Windows.Forms.Button();
             this.DeletePS_Button = new System.Windows.Forms.Button();
+            this.AddComputerButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -186,11 +187,22 @@
             this.DeletePS_Button.UseVisualStyleBackColor = true;
             this.DeletePS_Button.Click += new System.EventHandler(this.DeletePS_Button_Click);
             // 
+            // AddComputerButton
+            // 
+            this.AddComputerButton.Location = new System.Drawing.Point(15, 175);
+            this.AddComputerButton.Name = "AddComputerButton";
+            this.AddComputerButton.Size = new System.Drawing.Size(518, 23);
+            this.AddComputerButton.TabIndex = 15;
+            this.AddComputerButton.Text = "Добавить компьютер";
+            this.AddComputerButton.UseVisualStyleBackColor = true;
+            this.AddComputerButton.Click += new System.EventHandler(this.AddComputerButton_Click);
+            // 
             // Add_Computer_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 175);
+            this.ClientSize = new System.Drawing.Size(545, 206);
+            this.Controls.Add(this.AddComputerButton);
             this.Controls.Add(this.DeletePS_Button);
             this.Controls.Add(this.DeletePC_Button);
             this.Controls.Add(this.DeletePerefButton);
@@ -230,5 +242,6 @@
         private System.Windows.Forms.Button DeletePerefButton;
         private System.Windows.Forms.Button DeletePC_Button;
         private System.Windows.Forms.Button DeletePS_Button;
+        private System.Windows.Forms.Button AddComputerButton;
     }
 }
