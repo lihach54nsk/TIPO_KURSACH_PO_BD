@@ -46,7 +46,7 @@ namespace TIPO_KURSACH
             while (comboFormatPeref[i] != null)
             {
                 PerefComboBox.Items.Add(comboFormatPeref[i].ToString()); i++;
-            }            
+            }
 
             j = 1;
             i = 0;
@@ -69,7 +69,7 @@ namespace TIPO_KURSACH
 
             while (comboFormatPC[i] != null)
             {
-                PC_ComboBox.Items.Add(comboFormatPC[i].ToString());i++;
+                PC_ComboBox.Items.Add(comboFormatPC[i].ToString()); i++;
             }
 
             j = 1;
@@ -90,6 +90,11 @@ namespace TIPO_KURSACH
             }
 
             sqlConnection.Close();
+
+            while (comboFormatPS[i] != null)
+            {
+                PS_ComboBox.Items.Add(comboFormatPS[i].ToString()); i++;
+            }
         }
 
         private void AddPerefButton_Click(object sender, EventArgs e)
@@ -142,7 +147,7 @@ namespace TIPO_KURSACH
 
         private void AddPS_Button_Click(object sender, EventArgs e)
         {
-            string queryString = "INSERT INTO dbo.state_od_PS (PS) VALUES (N'{0}')";
+            string queryString = "INSERT INTO dbo.state_of_PS (PS) VALUES (N'{0}')";
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
