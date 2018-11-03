@@ -145,24 +145,22 @@ namespace TIPO_KURSACH
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            //  Sure_Form sure_Form = new Sure_Form();
-           // sure_Form
-            //if (sure_Form.Sure())
-            // {
-            string queryString = "DELETE FROM dbo.Workers WHERE lastName = N'{0}'";
-            SqlConnection sqlConnection = new SqlConnection(connectionString);
+            Sure_Form sure_Form = new Sure_Form();
+            if (sure_Form.ShowDialog() == DialogResult.Yes)
+            {
+                string queryString = "DELETE FROM dbo.Workers WHERE lastName = N'{0}'";
+                SqlConnection sqlConnection = new SqlConnection(connectionString);
 
-            sqlConnection.Open();
+                sqlConnection.Open();
 
-            string deleteFormat = string.Format(queryString, SearchTextBox.Text);
+                string deleteFormat = string.Format(queryString, SearchTextBox.Text);
 
-            SqlCommand sqlCommand = new SqlCommand(deleteFormat, sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(deleteFormat, sqlConnection);
 
-            sqlCommand.ExecuteNonQuery();
+                sqlCommand.ExecuteNonQuery();
 
-            sqlConnection.Close();
-            //}
-            //else return;
+                sqlConnection.Close();
+            }
         }
     }
 }
