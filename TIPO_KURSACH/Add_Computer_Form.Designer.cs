@@ -192,7 +192,7 @@
             // 
             this.AddComputerButton.Location = new System.Drawing.Point(15, 175);
             this.AddComputerButton.Name = "AddComputerButton";
-            this.AddComputerButton.Size = new System.Drawing.Size(518, 23);
+            this.AddComputerButton.Size = new System.Drawing.Size(523, 23);
             this.AddComputerButton.TabIndex = 15;
             this.AddComputerButton.Text = "Добавить компьютер";
             this.AddComputerButton.UseVisualStyleBackColor = true;
@@ -202,7 +202,7 @@
             // 
             this.ChangeComputerButton.Location = new System.Drawing.Point(15, 204);
             this.ChangeComputerButton.Name = "ChangeComputerButton";
-            this.ChangeComputerButton.Size = new System.Drawing.Size(518, 23);
+            this.ChangeComputerButton.Size = new System.Drawing.Size(523, 23);
             this.ChangeComputerButton.TabIndex = 16;
             this.ChangeComputerButton.Text = "Изменить компьютер";
             this.ChangeComputerButton.UseVisualStyleBackColor = true;

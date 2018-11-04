@@ -31,7 +31,6 @@
             this.ComputersDataGridView = new System.Windows.Forms.DataGridView();
             this.AddComputerButton = new System.Windows.Forms.Button();
             this.DeleteComputerButton = new System.Windows.Forms.Button();
-            this.ChangeDataComputerButton = new System.Windows.Forms.Button();
             this.ShowComputersButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ComputersDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +49,7 @@
             this.AddComputerButton.Name = "AddComputerButton";
             this.AddComputerButton.Size = new System.Drawing.Size(171, 23);
             this.AddComputerButton.TabIndex = 1;
-            this.AddComputerButton.Text = "Добавить";
+            this.AddComputerButton.Text = "Добавить/изменить";
             this.AddComputerButton.UseVisualStyleBackColor = true;
             this.AddComputerButton.Click += new System.EventHandler(this.AddComputerButton_Click);
             // 
@@ -64,19 +63,9 @@
             this.DeleteComputerButton.UseVisualStyleBackColor = true;
             this.DeleteComputerButton.Click += new System.EventHandler(this.DeleteComputerButton_Click);
             // 
-            // ChangeDataComputerButton
-            // 
-            this.ChangeDataComputerButton.Location = new System.Drawing.Point(189, 170);
-            this.ChangeDataComputerButton.Name = "ChangeDataComputerButton";
-            this.ChangeDataComputerButton.Size = new System.Drawing.Size(171, 23);
-            this.ChangeDataComputerButton.TabIndex = 3;
-            this.ChangeDataComputerButton.Text = "Изменить";
-            this.ChangeDataComputerButton.UseVisualStyleBackColor = true;
-            this.ChangeDataComputerButton.Click += new System.EventHandler(this.ChangeDataComputerButton_Click);
-            // 
             // ShowComputersButton
             // 
-            this.ShowComputersButton.Location = new System.Drawing.Point(366, 170);
+            this.ShowComputersButton.Location = new System.Drawing.Point(189, 170);
             this.ShowComputersButton.Name = "ShowComputersButton";
             this.ShowComputersButton.Size = new System.Drawing.Size(171, 23);
             this.ShowComputersButton.TabIndex = 4;
@@ -90,7 +79,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 201);
             this.Controls.Add(this.ShowComputersButton);
-            this.Controls.Add(this.ChangeDataComputerButton);
             this.Controls.Add(this.DeleteComputerButton);
             this.Controls.Add(this.AddComputerButton);
             this.Controls.Add(this.ComputersDataGridView);
@@ -106,7 +94,6 @@
         private System.Windows.Forms.DataGridView ComputersDataGridView;
         private System.Windows.Forms.Button AddComputerButton;
         private System.Windows.Forms.Button DeleteComputerButton;
-        private System.Windows.Forms.Button ChangeDataComputerButton;
         private System.Windows.Forms.Button ShowComputersButton;
     }
 }
