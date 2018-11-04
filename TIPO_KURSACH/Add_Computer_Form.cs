@@ -463,6 +463,32 @@ namespace TIPO_KURSACH
             insertCommand.ExecuteNonQuery();
 
             sqlConnection.Close();
+
+            sqlConnection.Open();
+
+            string lastIDString = "SELECT IDENT_CURRENT('dbo.PC_O')";
+
+            SqlCommand lastIDCommand = new SqlCommand(lastIDString, sqlConnection);
+
+            var dataLastID = lastIDCommand.ExecuteReader();
+            dataLastID.Read();
+            IDataRecord IDRecord = dataLastID;
+
+            string lastID = string.Format("{0}", IDRecord.GetValue(0).ToString());
+
+            sqlConnection.Close();
+
+            string insertState = "INSERT INTO dbo.State (Id_WorkPlace, STATE) VALUES ('{0}', '{1}')";
+
+            string stateFormat = string.Format(insertState, lastID, "0");
+
+            sqlConnection.Open();
+
+            SqlCommand stateCommand = new SqlCommand(stateFormat, sqlConnection);
+
+            stateCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
         }
 
         private void ChangeComputerButton_Click(object sender, EventArgs e)
