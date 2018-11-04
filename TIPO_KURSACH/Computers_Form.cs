@@ -64,7 +64,7 @@ namespace TIPO_KURSACH
         private void ShowComputersButton_Click(object sender, EventArgs e)
         {
             string queryString = "SELECT * FROM dbo.PC_O" +
-                                  " JOIN dbo.Peref ON dbo.PC_O.Id_Peref=dbo.Peref.Id_Peref" +
+                                  " JOIN dbo.Peref ON dbo.PC_O.Id_Peref = dbo.Peref.Id_Peref" +
                                   " JOIN dbo.State_of_PC ON dbo.PC_O.Id_PC = dbo.State_of_PC.Id_PC" +
                                   " JOIN dbo.state_of_PS ON dbo.PC_O.Id_PS = dbo.state_of_PS.Id_PS" + " ORDER BY Id_WorkPlace";
 
