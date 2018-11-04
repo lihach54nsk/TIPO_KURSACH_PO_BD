@@ -29,7 +29,26 @@ namespace TIPO_KURSACH
 
         private void DeleteComputerButton_Click(object sender, EventArgs e)
         {
+            string queryString = "DELETE FROM dbo.PC_O WHERE Id_WorkPlace = '{0}'";
 
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            var ID = ComputersDataGridView.Rows[ComputersDataGridView.SelectedCells[0].RowIndex].Cells[0].Value;
+
+            string deleteFormat = string.Format(queryString, ID);
+
+            Sure_Form sure_Form = new Sure_Form();
+
+            if (sure_Form.ShowDialog() == DialogResult.Yes)
+            {
+                sqlConnection.Open();
+
+                SqlCommand deleteCommand = new SqlCommand(deleteFormat, sqlConnection);
+
+                deleteCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+            }
         }
 
         private void ShowComputersButton_Click(object sender, EventArgs e)
