@@ -44,6 +44,7 @@
             this.DeletePC_Button = new System.Windows.Forms.Button();
             this.DeletePS_Button = new System.Windows.Forms.Button();
             this.AddComputerButton = new System.Windows.Forms.Button();
+            this.ChangeComputerButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -197,11 +198,22 @@
             this.AddComputerButton.UseVisualStyleBackColor = true;
             this.AddComputerButton.Click += new System.EventHandler(this.AddComputerButton_Click);
             // 
+            // ChangeComputerButton
+            // 
+            this.ChangeComputerButton.Location = new System.Drawing.Point(15, 204);
+            this.ChangeComputerButton.Name = "ChangeComputerButton";
+            this.ChangeComputerButton.Size = new System.Drawing.Size(518, 23);
+            this.ChangeComputerButton.TabIndex = 16;
+            this.ChangeComputerButton.Text = "Изменить компьютер";
+            this.ChangeComputerButton.UseVisualStyleBackColor = true;
+            this.ChangeComputerButton.Click += new System.EventHandler(this.ChangeComputerButton_Click);
+            // 
             // Add_Computer_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 206);
+            this.ClientSize = new System.Drawing.Size(545, 232);
+            this.Controls.Add(this.ChangeComputerButton);
             this.Controls.Add(this.AddComputerButton);
             this.Controls.Add(this.DeletePS_Button);
             this.Controls.Add(this.DeletePC_Button);
@@ -243,5 +255,6 @@
         private System.Windows.Forms.Button DeletePC_Button;
         private System.Windows.Forms.Button DeletePS_Button;
         private System.Windows.Forms.Button AddComputerButton;
+        private System.Windows.Forms.Button ChangeComputerButton;
     }
 }

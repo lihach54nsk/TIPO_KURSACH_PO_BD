@@ -464,5 +464,74 @@ namespace TIPO_KURSACH
 
             sqlConnection.Close();
         }
+
+        private void ChangeComputerButton_Click(object sender, EventArgs e)
+        {
+            string updateComputerString = "UPDATE dbo.PC_O SET Id_Peref = '{0}', Id_PC = '{1}', Id_PS = '{2}' WHERE Id_WorkPlace = '{3}'";
+            string SearchIDPerefString = "SELECT * FROM dbo.Peref WHERE Peref_data = N'{0}'";
+            string SearchIDPCString = "SELECT * FROM dbo.State_of_PC WHERE PC_data = N'{0}'";
+            string SearchIDPSString = "SELECT * FROM dbo.state_of_PS WHERE PS = N'{0}'";
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            Add_Change_Form add_Change_Form = new Add_Change_Form();
+
+            if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
+            {
+                string computerID = add_Change_Form.Data();
+
+                sqlConnection.Open();
+
+                string searchString = string.Format(SearchIDPerefString, PerefComboBox.Text);
+
+                SqlCommand searchIDPerefCommand = new SqlCommand(searchString, sqlConnection);
+
+                var data = searchIDPerefCommand.ExecuteReader();
+                data.Read();
+                IDataRecord record = data;
+
+                string Id_Peref = string.Format("{0}", record.GetValue(0).ToString());
+
+                sqlConnection.Close();
+
+                sqlConnection.Open();
+
+                searchString = string.Format(SearchIDPCString, PC_ComboBox.Text);
+
+                SqlCommand searchIDPCCommand = new SqlCommand(searchString, sqlConnection);
+
+                data = searchIDPCCommand.ExecuteReader();
+                data.Read();
+                record = data;
+
+                string Id_PC = string.Format("{0}", record.GetValue(0).ToString());
+
+                sqlConnection.Close();
+
+                sqlConnection.Open();
+
+                searchString = string.Format(SearchIDPSString, PS_ComboBox.Text);
+
+                SqlCommand searchIDPSCommand = new SqlCommand(searchString, sqlConnection);
+
+                data = searchIDPSCommand.ExecuteReader();
+                data.Read();
+                record = data;
+
+                string Id_PS = string.Format("{0}", record.GetValue(0).ToString());
+
+                sqlConnection.Close();
+
+                sqlConnection.Open();
+
+                string updateFormat = string.Format(updateComputerString, Id_Peref, Id_PC, Id_PS, computerID);
+
+                SqlCommand updateCommand = new SqlCommand(updateFormat, sqlConnection);
+
+                updateCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+            }
+        }
     }
 }
