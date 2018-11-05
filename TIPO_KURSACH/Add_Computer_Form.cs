@@ -576,6 +576,27 @@ namespace TIPO_KURSACH
                 updateCommand.ExecuteNonQuery();
 
                 sqlConnection.Close();
+
+                if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
+                {
+                    if (add_Change_Form.Data() == "") return;
+                    else
+                    {
+                        string money = add_Change_Form.Data();
+
+                        string updateMoney = "UPDATE dbo.workPlace_Receips SET salary_Hour='{0}' WHERE Id_WorkPlace = '{1}'";
+
+                        string updateMoneyFormat = string.Format(updateMoney, money, computerID);
+
+                        sqlConnection.Open();
+
+                        SqlCommand updateMoneyCommand = new SqlCommand(updateMoneyFormat, sqlConnection);
+
+                        updateMoneyCommand.ExecuteNonQuery();
+
+                        sqlConnection.Close();
+                    }
+                }
             }
         }
     }
