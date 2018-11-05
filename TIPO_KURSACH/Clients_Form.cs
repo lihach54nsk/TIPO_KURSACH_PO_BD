@@ -20,11 +20,12 @@ namespace TIPO_KURSACH
             InitializeComponent();
 
             string showComputersString = "SELECT * FROM dbo.State ORDER BY Id_WorkPlace";
-            string showComputersTime = "SELECT * FROM dbo.Clients_Data ORDER BY Id_WorkPlace";
+            string showComputersTime = "SELECT * FROM dbo.Clients_Data WHERE Id_client<>-1 ORDER BY Id_WorkPlace";
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
             string[] showFormat = new string[1000];
+            string[] dateTimeFormat = new string[1000];
 
             sqlConnection.Open();
 
@@ -40,6 +41,24 @@ namespace TIPO_KURSACH
                 j++;
             }
 
+            sqlConnection.Close();
+
+            sqlConnection.Open();
+
+            SqlCommand dateTimeCommand = new SqlCommand(showComputersTime, sqlConnection);
+
+            var dateTime = dateTimeCommand.ExecuteReader();
+
+            int t = 0;
+            while (dateTime.Read())
+            {
+                IDataRecord dataRecord = dateTime;
+                dateTimeFormat[t] = string.Format("{0}, {1}", dataRecord.GetValue(0).ToString(), dataRecord.GetValue(3).ToString());
+                t++;
+            }
+
+            sqlConnection.Close();
+
             ClientsComputersDataGridView.RowCount = j;
             ClientsComputersDataGridView.ColumnCount = 3;
 
@@ -51,12 +70,24 @@ namespace TIPO_KURSACH
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    if (i == 1) ClientsComputersDataGridView.Rows[k].Cells[i].Value = State(Convert.ToInt32(showFormat[k].Split(Convert.ToChar(","))[i]));
-                    else ClientsComputersDataGridView.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(","))[i];
+                    if (i == 1)
+                    {
+                        ClientsComputersDataGridView.Rows[k].Cells[i].Value = State(Convert.ToInt32(showFormat[k].Split(Convert.ToChar(","))[i]));
+                    }
+                    else
+                    {
+                        ClientsComputersDataGridView.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(","))[i];
+                        int y = 0;
+                        while (dateTimeFormat[y].Split(Convert.ToChar(","))[0] != null)
+                        {
+                            if (dateTimeFormat[y].Split(Convert.ToChar(","))[0] == ClientsComputersDataGridView.Rows[k].Cells[i].Value.ToString())
+                            {
+                                ClientsComputersDataGridView.Rows[k].Cells[2].Value = dateTimeFormat[y].Split(Convert.ToChar(","))[1]; break;
+                            }
+                        }
+                    }
                 }
             }
-
-            sqlConnection.Close();
         }
 
         private void UseComputerButton_Click(object sender, EventArgs e)
