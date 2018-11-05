@@ -37,8 +37,6 @@
             this.lastNameClientTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.computerNumberTextBox = new System.Windows.Forms.TextBox();
             this.dateTimePickerBegin = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.UseComputerButton = new System.Windows.Forms.Button();
@@ -108,7 +106,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 124);
+            this.label4.Location = new System.Drawing.Point(12, 96);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 13);
             this.label4.TabIndex = 16;
@@ -117,33 +115,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 150);
+            this.label5.Location = new System.Drawing.Point(12, 122);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 13);
             this.label5.TabIndex = 19;
             this.label5.Text = "Конец брони: ";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 92);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Номер компьютера: ";
-            // 
-            // computerNumberTextBox
-            // 
-            this.computerNumberTextBox.Location = new System.Drawing.Point(131, 89);
-            this.computerNumberTextBox.Name = "computerNumberTextBox";
-            this.computerNumberTextBox.Size = new System.Drawing.Size(164, 20);
-            this.computerNumberTextBox.TabIndex = 21;
-            // 
             // dateTimePickerBegin
             // 
             this.dateTimePickerBegin.CustomFormat = "yyyy-MM-dd hh:mm:ss";
             this.dateTimePickerBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerBegin.Location = new System.Drawing.Point(131, 118);
+            this.dateTimePickerBegin.Location = new System.Drawing.Point(131, 90);
             this.dateTimePickerBegin.Name = "dateTimePickerBegin";
             this.dateTimePickerBegin.Size = new System.Drawing.Size(164, 20);
             this.dateTimePickerBegin.TabIndex = 22;
@@ -152,14 +134,14 @@
             // 
             this.dateTimePickerEnd.CustomFormat = "yyyy-MM-dd hh:mm:ss";
             this.dateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(131, 144);
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(131, 116);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(164, 20);
             this.dateTimePickerEnd.TabIndex = 23;
             // 
             // UseComputerButton
             // 
-            this.UseComputerButton.Location = new System.Drawing.Point(12, 177);
+            this.UseComputerButton.Location = new System.Drawing.Point(12, 171);
             this.UseComputerButton.Name = "UseComputerButton";
             this.UseComputerButton.Size = new System.Drawing.Size(127, 23);
             this.UseComputerButton.TabIndex = 24;
@@ -169,7 +151,7 @@
             // 
             // ReserveComputerButton
             // 
-            this.ReserveComputerButton.Location = new System.Drawing.Point(145, 177);
+            this.ReserveComputerButton.Location = new System.Drawing.Point(145, 171);
             this.ReserveComputerButton.Name = "ReserveComputerButton";
             this.ReserveComputerButton.Size = new System.Drawing.Size(150, 23);
             this.ReserveComputerButton.TabIndex = 25;
@@ -179,7 +161,7 @@
             // 
             // CheckButton
             // 
-            this.CheckButton.Location = new System.Drawing.Point(12, 206);
+            this.CheckButton.Location = new System.Drawing.Point(12, 204);
             this.CheckButton.Name = "CheckButton";
             this.CheckButton.Size = new System.Drawing.Size(127, 23);
             this.CheckButton.TabIndex = 26;
@@ -189,7 +171,7 @@
             // 
             // DeleteReserveComputerButton
             // 
-            this.DeleteReserveComputerButton.Location = new System.Drawing.Point(145, 206);
+            this.DeleteReserveComputerButton.Location = new System.Drawing.Point(145, 204);
             this.DeleteReserveComputerButton.Name = "DeleteReserveComputerButton";
             this.DeleteReserveComputerButton.Size = new System.Drawing.Size(150, 23);
             this.DeleteReserveComputerButton.TabIndex = 27;
@@ -199,7 +181,7 @@
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(12, 235);
+            this.refreshButton.Location = new System.Drawing.Point(15, 142);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(283, 23);
             this.refreshButton.TabIndex = 28;
@@ -211,7 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 262);
+            this.ClientSize = new System.Drawing.Size(800, 236);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.DeleteReserveComputerButton);
             this.Controls.Add(this.CheckButton);
@@ -219,8 +201,6 @@
             this.Controls.Add(this.UseComputerButton);
             this.Controls.Add(this.dateTimePickerEnd);
             this.Controls.Add(this.dateTimePickerBegin);
-            this.Controls.Add(this.computerNumberTextBox);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.otchestvoClientTextBox);
@@ -249,8 +229,6 @@
         private System.Windows.Forms.TextBox lastNameClientTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox computerNumberTextBox;
         private System.Windows.Forms.DateTimePicker dateTimePickerBegin;
         private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
         private System.Windows.Forms.Button UseComputerButton;

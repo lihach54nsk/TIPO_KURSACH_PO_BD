@@ -59,57 +59,73 @@ namespace TIPO_KURSACH
 
         private void UseComputerButton_Click(object sender, EventArgs e)
         { // нужна проверка по состоянию компа
+            var IDWorkPlace = ClientsComputersDataGridView.Rows[ClientsComputersDataGridView.SelectedCells[0].RowIndex].Cells[0].Value;
+            string checkQuery = "SELECT * FROM dbo.State WHERE Id_WorkPlace = '{0}'";
 
-            string clientString = "INSERT INTO dbo.Clients (lastName, firstName, otchestvo) VALUES (N'{0}', N'{1}', N'{2}')";
-            string useString = "UPDATE dbo.Clients_Data SET Id_client = '{0}', " +
-                "dateTime_Begin = '{1}', dateTime_End = '{2}', traffic = '{3}' WHERE Id_WorkPlace = '{4}'";
-            string updateState = "UPDATE dbo.State SET STATE = '1' WHERE Id_WorkPlace = '{0}'";
-            string lastClientID = "SELECT IDENT_CURRENT ('dbo.Clients')";
+            string checkFormat = string.Format(checkQuery, IDWorkPlace);
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
             sqlConnection.Open();
 
-            string clientFormat = string.Format(clientString, lastNameClientTextBox.Text, firstNameClientTextBox.Text, otchestvoClientTextBox.Text);
+            SqlCommand checkCommand = new SqlCommand(checkFormat, sqlConnection);
 
-            SqlCommand clientCommand = new SqlCommand(clientFormat, sqlConnection);
+            var checkData = checkCommand.ExecuteReader();
+            checkData.Read();
+            IDataRecord check = checkData;
 
-            clientCommand.ExecuteNonQuery();
+            if (check.GetValue(1).ToString() == "0")
+            {
+                sqlConnection.Close();
 
-            sqlConnection.Close();
+                string clientString = "INSERT INTO dbo.Clients (lastName, firstName, otchestvo) VALUES (N'{0}', N'{1}', N'{2}')";
+                string useString = "UPDATE dbo.Clients_Data SET Id_client = '{0}', " +
+                    "dateTime_Begin = '{1}', dateTime_End = '{2}', traffic = '{3}' WHERE Id_WorkPlace = '{4}'";
+                string updateState = "UPDATE dbo.State SET STATE = '1' WHERE Id_WorkPlace = '{0}'";
+                string lastClientID = "SELECT IDENT_CURRENT ('dbo.Clients')";
 
-            sqlConnection.Open();
+                sqlConnection.Open();
 
-            SqlCommand clientIDCommand = new SqlCommand(lastClientID, sqlConnection);
+                string clientFormat = string.Format(clientString, lastNameClientTextBox.Text, firstNameClientTextBox.Text, otchestvoClientTextBox.Text);
 
-            var data = clientIDCommand.ExecuteReader();
-            data.Read();
-            IDataRecord record = data;
+                SqlCommand clientCommand = new SqlCommand(clientFormat, sqlConnection);
 
-            string lastID = string.Format("{0}", record.GetValue(0).ToString());
+                clientCommand.ExecuteNonQuery();
 
-            sqlConnection.Close();
+                sqlConnection.Close();
 
-            var IDWorkPlace = ClientsComputersDataGridView.Rows[ClientsComputersDataGridView.SelectedCells[0].RowIndex].Cells[0].Value;
+                sqlConnection.Open();
 
-            string useFormat = string.Format(useString, lastID, dateTimePickerBegin.Text, dateTimePickerEnd.Text, "0", IDWorkPlace);
-            string stateFormat = string.Format(updateState, IDWorkPlace);
+                SqlCommand clientIDCommand = new SqlCommand(lastClientID, sqlConnection);
 
-            sqlConnection.Open();
+                var data = clientIDCommand.ExecuteReader();
+                data.Read();
+                IDataRecord record = data;
 
-            SqlCommand useCommand = new SqlCommand(useFormat, sqlConnection);
+                string lastID = string.Format("{0}", record.GetValue(0).ToString());
 
-            useCommand.ExecuteNonQuery();
+                sqlConnection.Close();
 
-            sqlConnection.Close();
+                string useFormat = string.Format(useString, lastID, dateTimePickerBegin.Text, dateTimePickerEnd.Text, "0", IDWorkPlace);
+                string stateFormat = string.Format(updateState, IDWorkPlace);
 
-            sqlConnection.Open();
+                sqlConnection.Open();
 
-            SqlCommand sqlCommand = new SqlCommand(stateFormat, sqlConnection);
+                SqlCommand useCommand = new SqlCommand(useFormat, sqlConnection);
 
-            sqlCommand.ExecuteNonQuery();
+                useCommand.ExecuteNonQuery();
 
-            sqlConnection.Close();
+                sqlConnection.Close();
+
+                sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(stateFormat, sqlConnection);
+
+                sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+            }
+            else sqlConnection.Close();
         }
 
         private void ReserveComputerButton_Click(object sender, EventArgs e)
