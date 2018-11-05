@@ -405,6 +405,7 @@ namespace TIPO_KURSACH
         private void AddComputerButton_Click(object sender, EventArgs e)
         {
             string addComputerString = "INSERT INTO dbo.PC_O (Id_Peref, Id_PC, Id_PS) VALUES ('{0}', '{1}', '{2}')";
+            string addWorkPlaceString = "INSERT INTO dbo.Clients_Data (Id_WorkPlace) VALUES ('{0}')";
 
             string SearchIDPerefString = "SELECT * FROM dbo.Peref WHERE Peref_data = N'{0}'";
             string SearchIDPCString = "SELECT * FROM dbo.State_of_PC WHERE PC_data = N'{0}'";
@@ -505,6 +506,16 @@ namespace TIPO_KURSACH
                 SqlCommand moneyCommand = new SqlCommand(moneyFormat, sqlConnection);
 
                 moneyCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+
+                sqlConnection.Open();
+
+                string clientsFormat = string.Format(addWorkPlaceString, lastID);
+
+                SqlCommand clientsCommand = new SqlCommand(clientsFormat, sqlConnection);
+
+                clientsCommand.ExecuteNonQuery();
 
                 sqlConnection.Close();
             }

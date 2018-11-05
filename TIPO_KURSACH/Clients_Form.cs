@@ -20,6 +20,7 @@ namespace TIPO_KURSACH
             InitializeComponent();
 
             string showComputersString = "SELECT * FROM dbo.State ORDER BY Id_WorkPlace";
+            string showComputersTime = "SELECT * FROM dbo.Clients_Data ORDER BY Id_WorkPlace";
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
@@ -40,10 +41,11 @@ namespace TIPO_KURSACH
             }
 
             ClientsComputersDataGridView.RowCount = j;
-            ClientsComputersDataGridView.ColumnCount = 2;
+            ClientsComputersDataGridView.ColumnCount = 3;
 
             ClientsComputersDataGridView.Columns[0].Name = "ID";
             ClientsComputersDataGridView.Columns[1].Name = "Состояние";
+            ClientsComputersDataGridView.Columns[2].Name = "Занят/бронь до";
 
             for (int k = 0; k < j - 1; k++)
             {
@@ -58,7 +60,7 @@ namespace TIPO_KURSACH
         }
 
         private void UseComputerButton_Click(object sender, EventArgs e)
-        { // нужна проверка по состоянию компа
+        {
             var IDWorkPlace = ClientsComputersDataGridView.Rows[ClientsComputersDataGridView.SelectedCells[0].RowIndex].Cells[0].Value;
             string checkQuery = "SELECT * FROM dbo.State WHERE Id_WorkPlace = '{0}'";
 
