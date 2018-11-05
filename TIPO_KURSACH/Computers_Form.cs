@@ -31,6 +31,7 @@ namespace TIPO_KURSACH
         {
             string queryString = "DELETE FROM dbo.PC_O WHERE Id_WorkPlace = '{0}'";
             string queryStateString = "DELETE FROM dbo.State WHERE Id_WorkPlace = '{0}'";
+            string queryMoneyString = "DELETE FROM dbo.workPlace_Receips WHERE Id_WorkPlace = '{0}'";
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
@@ -38,6 +39,7 @@ namespace TIPO_KURSACH
 
             string deleteFormat = string.Format(queryString, ID);
             string deleteStateFormat = string.Format(queryStateString, ID);
+            string deleteMoneyFormat = string.Format(queryMoneyString, ID);
 
             Sure_Form sure_Form = new Sure_Form();
 
@@ -56,6 +58,14 @@ namespace TIPO_KURSACH
                 SqlCommand deleteStateCommand = new SqlCommand(deleteStateFormat, sqlConnection);
 
                 deleteStateCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+
+                sqlConnection.Open();
+
+                SqlCommand deleteMoneyCommand = new SqlCommand(deleteMoneyFormat, sqlConnection);
+
+                deleteMoneyCommand.ExecuteNonQuery();
 
                 sqlConnection.Close();
             }
