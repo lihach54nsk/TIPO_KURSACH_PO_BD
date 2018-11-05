@@ -59,6 +59,7 @@ namespace TIPO_KURSACH
 
         private void UseComputerButton_Click(object sender, EventArgs e)
         { // нужна проверка по состоянию компа
+
             string clientString = "INSERT INTO dbo.Clients (lastName, firstName, otchestvo) VALUES (N'{0}', N'{1}', N'{2}')";
             string useString = "UPDATE dbo.Clients_Data SET Id_client = '{0}', " +
                 "dateTime_Begin = '{1}', dateTime_End = '{2}', traffic = '{3}' WHERE Id_WorkPlace = '{4}'";
@@ -136,6 +137,46 @@ namespace TIPO_KURSACH
                 case 3: return "Забронировано";
             }
             return "Баг";
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            string showComputersString = "SELECT * FROM dbo.State ORDER BY Id_WorkPlace";
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            string[] showFormat = new string[1000];
+
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(showComputersString, sqlConnection);
+
+            var data = sqlCommand.ExecuteReader();
+            int j = 1;
+
+            while (data.Read())
+            {
+                IDataRecord record = data;
+                showFormat[j - 1] = string.Format("{0}, {1}", record.GetValue(0).ToString(), record.GetValue(1).ToString());
+                j++;
+            }
+
+            ClientsComputersDataGridView.RowCount = j;
+            ClientsComputersDataGridView.ColumnCount = 2;
+
+            ClientsComputersDataGridView.Columns[0].Name = "ID";
+            ClientsComputersDataGridView.Columns[1].Name = "Состояние";
+
+            for (int k = 0; k < j - 1; k++)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    if (i == 1) ClientsComputersDataGridView.Rows[k].Cells[i].Value = State(Convert.ToInt32(showFormat[k].Split(Convert.ToChar(","))[i]));
+                    else ClientsComputersDataGridView.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(","))[i];
+                }
+            }
+
+            sqlConnection.Close();
         }
     }
 }

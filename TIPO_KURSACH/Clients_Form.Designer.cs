@@ -45,6 +45,7 @@
             this.ReserveComputerButton = new System.Windows.Forms.Button();
             this.CheckButton = new System.Windows.Forms.Button();
             this.DeleteReserveComputerButton = new System.Windows.Forms.Button();
+            this.refreshButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsComputersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -196,11 +197,22 @@
             this.DeleteReserveComputerButton.UseVisualStyleBackColor = true;
             this.DeleteReserveComputerButton.Click += new System.EventHandler(this.DeleteReserveComputerButton_Click);
             // 
+            // refreshButton
+            // 
+            this.refreshButton.Location = new System.Drawing.Point(12, 235);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(283, 23);
+            this.refreshButton.TabIndex = 28;
+            this.refreshButton.Text = "Обновить";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
             // Clients_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 239);
+            this.ClientSize = new System.Drawing.Size(800, 262);
+            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.DeleteReserveComputerButton);
             this.Controls.Add(this.CheckButton);
             this.Controls.Add(this.ReserveComputerButton);
@@ -245,5 +257,6 @@
         private System.Windows.Forms.Button ReserveComputerButton;
         private System.Windows.Forms.Button CheckButton;
         private System.Windows.Forms.Button DeleteReserveComputerButton;
+        private System.Windows.Forms.Button refreshButton;
     }
 }
