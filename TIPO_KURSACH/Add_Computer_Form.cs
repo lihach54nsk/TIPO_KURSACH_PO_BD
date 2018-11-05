@@ -410,85 +410,104 @@ namespace TIPO_KURSACH
             string SearchIDPCString = "SELECT * FROM dbo.State_of_PC WHERE PC_data = N'{0}'";
             string SearchIDPSString = "SELECT * FROM dbo.state_of_PS WHERE PS = N'{0}'";
 
-            SqlConnection sqlConnection = new SqlConnection(connectionString);           
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
 
-            sqlConnection.Open();
+            Add_Change_Form add_Change_Form = new Add_Change_Form();
 
-            string searchString = string.Format(SearchIDPerefString, PerefComboBox.Text);
+            if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
+            {
+                string money = add_Change_Form.Data();
 
-            SqlCommand searchIDPerefCommand = new SqlCommand(searchString, sqlConnection);
+                sqlConnection.Open();
 
-            var data = searchIDPerefCommand.ExecuteReader();
-            data.Read();
-            IDataRecord record = data;
+                string searchString = string.Format(SearchIDPerefString, PerefComboBox.Text);
 
-            string Id_Peref = string.Format("{0}", record.GetValue(0).ToString());
+                SqlCommand searchIDPerefCommand = new SqlCommand(searchString, sqlConnection);
 
-            sqlConnection.Close();
+                var data = searchIDPerefCommand.ExecuteReader();
+                data.Read();
+                IDataRecord record = data;
 
-            sqlConnection.Open();
+                string Id_Peref = string.Format("{0}", record.GetValue(0).ToString());
 
-            searchString = string.Format(SearchIDPCString, PC_ComboBox.Text);
+                sqlConnection.Close();
 
-            SqlCommand searchIDPCCommand = new SqlCommand(searchString, sqlConnection);
+                sqlConnection.Open();
 
-            data = searchIDPCCommand.ExecuteReader();
-            data.Read();
-            record = data;
+                searchString = string.Format(SearchIDPCString, PC_ComboBox.Text);
 
-            string Id_PC = string.Format("{0}", record.GetValue(0).ToString());
+                SqlCommand searchIDPCCommand = new SqlCommand(searchString, sqlConnection);
 
-            sqlConnection.Close();
+                data = searchIDPCCommand.ExecuteReader();
+                data.Read();
+                record = data;
 
-            sqlConnection.Open();
+                string Id_PC = string.Format("{0}", record.GetValue(0).ToString());
 
-            searchString = string.Format(SearchIDPSString, PS_ComboBox.Text);
+                sqlConnection.Close();
 
-            SqlCommand searchIDPSCommand = new SqlCommand(searchString, sqlConnection);
+                sqlConnection.Open();
 
-            data = searchIDPSCommand.ExecuteReader();
-            data.Read();
-            record = data;
+                searchString = string.Format(SearchIDPSString, PS_ComboBox.Text);
 
-            string Id_PS = string.Format("{0}", record.GetValue(0).ToString());
+                SqlCommand searchIDPSCommand = new SqlCommand(searchString, sqlConnection);
 
-            sqlConnection.Close();
+                data = searchIDPSCommand.ExecuteReader();
+                data.Read();
+                record = data;
 
-            string insertFormat = string.Format(addComputerString, Id_Peref, Id_PC, Id_PS);
+                string Id_PS = string.Format("{0}", record.GetValue(0).ToString());
 
-            sqlConnection.Open();
+                sqlConnection.Close();
 
-            SqlCommand insertCommand = new SqlCommand(insertFormat, sqlConnection);
+                string insertFormat = string.Format(addComputerString, Id_Peref, Id_PC, Id_PS);
 
-            insertCommand.ExecuteNonQuery();
+                sqlConnection.Open();
 
-            sqlConnection.Close();
+                SqlCommand insertCommand = new SqlCommand(insertFormat, sqlConnection);
 
-            sqlConnection.Open();
+                insertCommand.ExecuteNonQuery();
 
-            string lastIDString = "SELECT IDENT_CURRENT('dbo.PC_O')";
+                sqlConnection.Close();
 
-            SqlCommand lastIDCommand = new SqlCommand(lastIDString, sqlConnection);
+                sqlConnection.Open();
 
-            var dataLastID = lastIDCommand.ExecuteReader();
-            dataLastID.Read();
-            IDataRecord IDRecord = dataLastID;
+                string lastIDString = "SELECT IDENT_CURRENT('dbo.PC_O')";
 
-            string lastID = string.Format("{0}", IDRecord.GetValue(0).ToString());
+                SqlCommand lastIDCommand = new SqlCommand(lastIDString, sqlConnection);
 
-            sqlConnection.Close();
+                var dataLastID = lastIDCommand.ExecuteReader();
+                dataLastID.Read();
+                IDataRecord IDRecord = dataLastID;
 
-            string insertState = "INSERT INTO dbo.State (Id_WorkPlace, STATE) VALUES ('{0}', '{1}')";
+                string lastID = string.Format("{0}", IDRecord.GetValue(0).ToString());
 
-            string stateFormat = string.Format(insertState, lastID, "0");
+                sqlConnection.Close();
 
-            sqlConnection.Open();
+                string insertState = "INSERT INTO dbo.State (Id_WorkPlace, STATE) VALUES ('{0}', '{1}')";
 
-            SqlCommand stateCommand = new SqlCommand(stateFormat, sqlConnection);
+                string stateFormat = string.Format(insertState, lastID, "0");
 
-            stateCommand.ExecuteNonQuery();
+                sqlConnection.Open();
 
-            sqlConnection.Close();
+                SqlCommand stateCommand = new SqlCommand(stateFormat, sqlConnection);
+
+                stateCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+
+                string insertMoney = "INSERT INTO dbo.workPlace_Receips (Id_WorkPlace, salary_Hour) VALUES ('{0}', '{1}')";
+
+                string moneyFormat = string.Format(insertMoney, lastID, money);
+
+                sqlConnection.Open();
+
+                SqlCommand moneyCommand = new SqlCommand(moneyFormat, sqlConnection);
+
+                moneyCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+            }
         }
 
         private void ChangeComputerButton_Click(object sender, EventArgs e)
