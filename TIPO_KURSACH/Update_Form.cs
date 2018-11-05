@@ -13,7 +13,7 @@ namespace TIPO_KURSACH
 {
     public partial class Update_Form : Form
     {
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Геральт из Ривии\Documents\TIPO_KURSACH\TIPO_KURSACH\Database1.mdf;Integrated Security = True";
+        string connectionString = Autorization.GetConnectionString();
 
         public Update_Form()
         {

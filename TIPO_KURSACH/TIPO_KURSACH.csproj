@@ -73,6 +73,7 @@
     <Compile Include="Add_Computer_Form.Designer.cs">
       <DependentUpon>Add_Computer_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Autorization.cs" />
     <Compile Include="Clients_Form.cs">
       <SubType>Form</SubType>
     </Compile>
