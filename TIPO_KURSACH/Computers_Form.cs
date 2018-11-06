@@ -93,7 +93,7 @@ namespace TIPO_KURSACH
             {
                 IDataRecord record = data;
 
-                showFormat[j - 1] = string.Format("{0}, {1}, {2}, {3}", record.GetValue(0).ToString(),
+                showFormat[j - 1] = string.Format("{0}% {1}% {2}% {3}", record.GetValue(0).ToString(),
                     record.GetValue(5).ToString(),
                     record.GetValue(7).ToString(),
                     record.GetValue(9).ToString());
@@ -111,7 +111,7 @@ namespace TIPO_KURSACH
             for (int k = 0; k < j - 1; k++)
             {
                 for (int i = 0; i < 4; i++)
-                    ComputersDataGridView.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(","))[i];
+                    ComputersDataGridView.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar("%"))[i];
             }
 
             sqlConnection.Close();
