@@ -164,7 +164,75 @@ namespace TIPO_KURSACH
 
         private void ReserveComputerButton_Click(object sender, EventArgs e)
         {
+            var IDWorkPlace = ClientsComputersDataGridView.Rows[ClientsComputersDataGridView.SelectedCells[0].RowIndex].Cells[0].Value;
 
+            string checkQuery = "SELECT * FROM dbo.State WHERE Id_WorkPlace = '{0}'";
+
+            string checkFormat = string.Format(checkQuery, IDWorkPlace);
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            sqlConnection.Open();
+
+            SqlCommand checkCommand = new SqlCommand(checkFormat, sqlConnection);
+
+            var checkData = checkCommand.ExecuteReader();
+            checkData.Read();
+            IDataRecord check = checkData;
+
+            if (check.GetValue(1).ToString() == "0")
+            {
+                sqlConnection.Close();
+
+                string clientString = "INSERT INTO dbo.Clients (lastName, firstName, otchestvo) VALUES (N'{0}', N'{1}', N'{2}')";
+                string reserveString = "UPDATE dbo.Clients_Data SET Id_client = '{0}', " +
+                    "dateTime_Begin = '{1}', dateTime_End = '{2}', traffic = '{3}' WHERE Id_WorkPlace = '{4}'";
+                string updateState = "UPDATE dbo.State SET STATE = '3' WHERE Id_WorkPlace = '{0}'";
+                string lastClientID = "SELECT IDENT_CURRENT ('dbo.Clients')";
+
+                sqlConnection.Open();
+
+                string clientFormat = string.Format(clientString, lastNameClientTextBox.Text, firstNameClientTextBox.Text, otchestvoClientTextBox.Text);
+
+                SqlCommand clientCommand = new SqlCommand(clientFormat, sqlConnection);
+
+                clientCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+
+                sqlConnection.Open();
+
+                SqlCommand clientIDCommand = new SqlCommand(lastClientID, sqlConnection);
+
+                var data = clientIDCommand.ExecuteReader();
+                data.Read();
+                IDataRecord record = data;
+
+                string lastID = string.Format("{0}", record.GetValue(0).ToString());
+
+                sqlConnection.Close();
+
+                string reserveFormat = string.Format(reserveString, lastID, dateTimePickerBegin.Text, dateTimePickerEnd.Text, "0", IDWorkPlace);
+                string stateFormat = string.Format(updateState, IDWorkPlace);
+
+                sqlConnection.Open();
+
+                SqlCommand reserveCommand = new SqlCommand(reserveFormat, sqlConnection);
+
+                reserveCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+
+                sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(stateFormat, sqlConnection);
+
+                sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+            }
+
+            sqlConnection.Close();
         }
 
         private void CheckButton_Click(object sender, EventArgs e)
@@ -174,7 +242,21 @@ namespace TIPO_KURSACH
 
         private void DeleteReserveComputerButton_Click(object sender, EventArgs e)
         {
+            var IDWorkPlace = ClientsComputersDataGridView.Rows[ClientsComputersDataGridView.SelectedCells[0].RowIndex].Cells[0].Value;
 
+            string releaseString = "UPDATE dbo.State SET STATE = '0' WHERE Id_WorkPlace = '{0}'";
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            string releaseFormat = string.Format(releaseString, IDWorkPlace);
+
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(releaseFormat, sqlConnection);
+
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
         }
 
         string State(int state)

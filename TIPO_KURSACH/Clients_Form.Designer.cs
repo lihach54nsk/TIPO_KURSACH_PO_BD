@@ -175,7 +175,7 @@
             this.DeleteReserveComputerButton.Name = "DeleteReserveComputerButton";
             this.DeleteReserveComputerButton.Size = new System.Drawing.Size(150, 23);
             this.DeleteReserveComputerButton.TabIndex = 27;
-            this.DeleteReserveComputerButton.Text = "Снять бронь";
+            this.DeleteReserveComputerButton.Text = "Снять бронь/место";
             this.DeleteReserveComputerButton.UseVisualStyleBackColor = true;
             this.DeleteReserveComputerButton.Click += new System.EventHandler(this.DeleteReserveComputerButton_Click);
             // 
