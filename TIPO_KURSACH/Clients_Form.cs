@@ -237,7 +237,7 @@ namespace TIPO_KURSACH
 
         private void CheckButton_Click(object sender, EventArgs e)
         {
-
+            // докинуть добавление в Receips, нужно собирать инфу о бабле
         }
 
         private void DeleteReserveComputerButton_Click(object sender, EventArgs e)
