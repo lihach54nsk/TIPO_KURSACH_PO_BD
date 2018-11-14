@@ -310,6 +310,9 @@ namespace TIPO_KURSACH
 
             string money = moneyRecord.GetValue(1).ToString();
 
+            double moneyRound = Math.Round(Convert.ToDouble(money), 2);
+            money = moneyRound.ToString();
+
             sqlConnection.Close();
 
             string releaseString = "UPDATE dbo.State SET STATE = '0' WHERE Id_WorkPlace = '{0}'";
