@@ -47,7 +47,7 @@ namespace TIPO_KURSACH
                 footerRange.ParagraphFormat.Alignment =
                     Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                 //Установка текста для вывода в нижнем колонтитуле
-                footerRange.Text = "Подпись сотрудника:_____________                               Подпись клиента:_____________";
+                footerRange.Text = "Подпись сотрудника:_____________                                               Подпись клиента:_____________";
             }
 
             Microsoft.Office.Interop.Word.Paragraph txt = document.Content.Paragraphs.Add(ref missing);

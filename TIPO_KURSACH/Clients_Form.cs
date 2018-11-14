@@ -261,7 +261,12 @@ namespace TIPO_KURSACH
             string dateTime_Begin = Convert.ToDateTime(record.GetValue(2)).ToString("yyyy-MM-dd hh:mm:ss");
             string dateTime_End = Convert.ToDateTime(record.GetValue(3)).ToString("yyyy-MM-dd hh:mm:ss");
 
-            //var pool = dateTime_Begin.ToString("yyyy-MM-dd");
+            DateTime begin = Convert.ToDateTime(record.GetValue(2));
+            DateTime end = Convert.ToDateTime(record.GetValue(3));
+            TimeSpan difference = end - begin;
+            double hours = Math.Floor(difference.TotalHours);
+            double minutes = (difference.TotalMinutes / 60) - hours;
+            if (minutes > 0) hours++;
 
             string traffic = record.GetValue(4).ToString();
 
@@ -299,7 +304,7 @@ namespace TIPO_KURSACH
             string moneyString = "SELECT * FROM dbo.workPlace_Receips WHERE Id_WorkPlace = '{0}'";
 
             string moneyFormat = string.Format(moneyString, IDWorkPlace);
-            
+
             sqlConnection.Open();
 
             SqlCommand moneyCommand = new SqlCommand(moneyFormat, sqlConnection);
@@ -310,7 +315,7 @@ namespace TIPO_KURSACH
 
             string money = moneyRecord.GetValue(1).ToString();
 
-            double moneyRound = Math.Round(Convert.ToDouble(money), 2);
+            double moneyRound = Math.Round(Convert.ToDouble(money) * 1.5 * hours + Convert.ToDouble(traffic), 2);
             money = moneyRound.ToString();
 
             sqlConnection.Close();
@@ -325,7 +330,7 @@ namespace TIPO_KURSACH
 
             sqlCommand.ExecuteNonQuery();
 
-            sqlConnection.Close();            
+            sqlConnection.Close();
 
             documents.CreateCheckDocument(Convert.ToInt32(IDWorkPlace), lastNameClient, firstNameClient, otchestvo, dateTime_Begin.ToString(), dateTime_End.ToString(), money);
         }
@@ -415,11 +420,11 @@ namespace TIPO_KURSACH
                 for (int i = 0; i < 2; i++)
                 {
                     if (i == 1)
-                    {                        
+                    {
                         ClientsComputersDataGridView.Rows[k].Cells[i].Value = State(Convert.ToInt32(showFormat[k].Split(Convert.ToChar(","))[i]));
                     }
                     else
-                    {                        
+                    {
                         ClientsComputersDataGridView.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(","))[i];
                         int y = 0;
                         while (dateTimeFormat[y] != null)
