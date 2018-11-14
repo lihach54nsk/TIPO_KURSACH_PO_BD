@@ -239,6 +239,7 @@ namespace TIPO_KURSACH
         private void CheckButton_Click(object sender, EventArgs e)
         {
             var IDWorkPlace = ClientsComputersDataGridView.Rows[ClientsComputersDataGridView.SelectedCells[0].RowIndex].Cells[0].Value;
+            Documents documents = new Documents();
 
             string addReceipsString = "INSERT INTO dbo.Receips (Id_WorkPlace, Id_client, dateTime_Begin, dateTime_End, traffic) " +
                 "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')";
@@ -257,13 +258,17 @@ namespace TIPO_KURSACH
             IDataRecord record = data;
 
             string IDClient = record.GetValue(1).ToString();
-            string dateTime_Begin = record.GetValue(2).ToString();
-            string dateTime_End = record.GetValue(3).ToString();
+            string dateTime_Begin = Convert.ToDateTime(record.GetValue(2)).ToString("yyyy-MM-dd hh:mm:ss");
+            string dateTime_End = Convert.ToDateTime(record.GetValue(3)).ToString("yyyy-MM-dd hh:mm:ss");
+
+            //var pool = dateTime_Begin.ToString("yyyy-MM-dd");
+
             string traffic = record.GetValue(4).ToString();
 
             sqlConnection.Close();
 
-            string addReceipsFormat = string.Format(addReceipsString, IDWorkPlace, IDClient, dateTime_Begin, dateTime_End, traffic);
+            string addReceipsFormat = string.Format(addReceipsString, IDWorkPlace,
+                IDClient, dateTime_Begin, dateTime_End, traffic);
 
             sqlConnection.Open();
 
@@ -317,11 +322,9 @@ namespace TIPO_KURSACH
 
             sqlCommand.ExecuteNonQuery();
 
-            sqlConnection.Close();
+            sqlConnection.Close();            
 
-            Documents documents = new Documents();
-
-            documents.CreateCheckDocument(Convert.ToInt32(IDWorkPlace), lastNameClient, firstNameClient, otchestvo, dateTime_Begin, dateTime_End, money);
+            documents.CreateCheckDocument(Convert.ToInt32(IDWorkPlace), lastNameClient, firstNameClient, otchestvo, dateTime_Begin.ToString(), dateTime_End.ToString(), money);
         }
 
         private void DeleteReserveComputerButton_Click(object sender, EventArgs e)

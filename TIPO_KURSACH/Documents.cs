@@ -5,11 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Office.Interop.Word;
 using System.Reflection;
+using System.Globalization;
 
 namespace TIPO_KURSACH
 {
     class Documents
     {
+        public string ParseToFormat(string data)
+        {
+            CultureInfo cultureInfoRU = new CultureInfo("ru-RU");
+
+            var date = DateTime.Parse(data, cultureInfoRU);
+
+            return date.ToString();
+        }
+
         public void CreateCheckDocument(int IDComputer, string lastNameClient, string firstNameClient, string otchestvo, string dateTimeBegin, string dateTimeEnd, string money)
         {
             Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
@@ -156,6 +166,7 @@ namespace TIPO_KURSACH
                     }
                 }
             }
+            winword.Visible = true;
         }
 
         public void CreateReceipsDocument()
