@@ -39,7 +39,7 @@ namespace TIPO_KURSACH
 
                 headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlack;
                 headerRange.Font.Size = 10;
-                headerRange.Text = "Счёт по ФИО" + lastNameClient + firstNameClient + otchestvo;
+                headerRange.Text = "Счёт по ФИО " + lastNameClient + " " + firstNameClient + " " + otchestvo;
 
                 Microsoft.Office.Interop.Word.Paragraph txt = document.Content.Paragraphs.Add(ref missing);
 
@@ -47,11 +47,13 @@ namespace TIPO_KURSACH
 
                 table.Borders.Enable = 1;
 
+                winword.Visible = true;
+
                 for (int i = 0; i < 2; i++)
                 {
                     for (int j = 0; j < table.Columns.Count; j++)
                     {
-                        var cell = table.Cell(i, j);
+                        var cell = table.Cell(i + 1, j + 1);
 
                         if (cell.RowIndex == 1)
                         {
@@ -166,7 +168,7 @@ namespace TIPO_KURSACH
                     }
                 }
             }
-            winword.Visible = true;
+            
         }
 
         public void CreateReceipsDocument()
