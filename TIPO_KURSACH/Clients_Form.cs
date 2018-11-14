@@ -238,7 +238,90 @@ namespace TIPO_KURSACH
 
         private void CheckButton_Click(object sender, EventArgs e)
         {
-            // докинуть добавление в Receips, нужно собирать инфу о бабле
+            var IDWorkPlace = ClientsComputersDataGridView.Rows[ClientsComputersDataGridView.SelectedCells[0].RowIndex].Cells[0].Value;
+
+            string addReceipsString = "INSERT INTO dbo.Receips (Id_WorkPlace, Id_client, dateTime_Begin, dateTime_End, traffic) " +
+                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')";
+            string computerString = "SELECT * FROM dbo.Clients_Data WHERE Id_WorkPlace = '{0}'";
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            string computerFormat = string.Format(computerString, IDWorkPlace);
+
+            sqlConnection.Open();
+
+            SqlCommand computerCommand = new SqlCommand(computerFormat, sqlConnection);
+
+            var data = computerCommand.ExecuteReader();
+            data.Read();
+            IDataRecord record = data;
+
+            string IDClient = record.GetValue(1).ToString();
+            string dateTime_Begin = record.GetValue(2).ToString();
+            string dateTime_End = record.GetValue(3).ToString();
+            string traffic = record.GetValue(4).ToString();
+
+            sqlConnection.Close();
+
+            string addReceipsFormat = string.Format(addReceipsString, IDWorkPlace, IDClient, dateTime_Begin, dateTime_End, traffic);
+
+            sqlConnection.Open();
+
+            SqlCommand receipsCommand = new SqlCommand(addReceipsFormat, sqlConnection);
+
+            receipsCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+
+            string clientInfo = "SELECT * FROM dbo.Clients WHERE Id_client = '{0}'";
+
+            string clientInfoFormat = string.Format(clientInfo, IDClient);
+
+            sqlConnection.Open();
+
+            SqlCommand clientCommand = new SqlCommand(clientInfoFormat, sqlConnection);
+
+            var clientData = clientCommand.ExecuteReader();
+            clientData.Read();
+            IDataRecord clientRecord = clientData;
+
+            string lastNameClient = clientRecord.GetValue(1).ToString();
+            string firstNameClient = clientRecord.GetValue(2).ToString();
+            string otchestvo = clientRecord.GetValue(3).ToString();
+
+            sqlConnection.Close();
+
+            string moneyString = "SELECT * FROM dbo.workPlace_Receips WHERE Id_WorkPlace = '{0}'";
+
+            string moneyFormat = string.Format(moneyString, IDWorkPlace);
+            
+            sqlConnection.Open();
+
+            SqlCommand moneyCommand = new SqlCommand(moneyFormat, sqlConnection);
+
+            var moneyData = moneyCommand.ExecuteReader();
+            moneyData.Read();
+            IDataRecord moneyRecord = moneyData;
+
+            string money = moneyRecord.GetValue(1).ToString();
+
+            sqlConnection.Close();
+
+            string releaseString = "UPDATE dbo.State SET STATE = '0' WHERE Id_WorkPlace = '{0}'";
+
+            string releaseFormat = string.Format(releaseString, IDWorkPlace);
+
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(releaseFormat, sqlConnection);
+
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+
+            Documents documents = new Documents();
+
+            documents.CreateCheckDocument(Convert.ToInt32(IDWorkPlace), lastNameClient, firstNameClient, otchestvo, dateTime_Begin, dateTime_End, money);
         }
 
         private void DeleteReserveComputerButton_Click(object sender, EventArgs e)
