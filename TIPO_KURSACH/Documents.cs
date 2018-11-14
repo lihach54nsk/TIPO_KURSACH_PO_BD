@@ -111,7 +111,7 @@ namespace TIPO_KURSACH
                                 cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
                                 cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
                             case 6:
-                                cell.Range.Text = "Счёт";
+                                cell.Range.Text = "Сумма к оплате";
                                 cell.Range.Font.Name = "verdana";
                                 cell.Range.Font.Size = 10;
                                 cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
@@ -176,8 +176,6 @@ namespace TIPO_KURSACH
                     }
                 }
             }
-
-            
         }
 
         public void CreateReceipsDocument()
