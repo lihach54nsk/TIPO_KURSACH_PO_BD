@@ -412,17 +412,18 @@ namespace TIPO_KURSACH
                 for (int i = 0; i < 2; i++)
                 {
                     if (i == 1)
-                    {
+                    {                        
                         ClientsComputersDataGridView.Rows[k].Cells[i].Value = State(Convert.ToInt32(showFormat[k].Split(Convert.ToChar(","))[i]));
                     }
                     else
-                    {
+                    {                        
                         ClientsComputersDataGridView.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(","))[i];
                         int y = 0;
                         while (dateTimeFormat[y] != null)
                         {
                             if (dateTimeFormat[y].Split(Convert.ToChar(","))[0] == ClientsComputersDataGridView.Rows[k].Cells[i].Value.ToString())
                             {
+                                if (ClientsComputersDataGridView.Rows[k].Cells[1].Value.ToString() == "Свободно") { ClientsComputersDataGridView.Rows[k].Cells[2].Value = ""; break; }
                                 ClientsComputersDataGridView.Rows[k].Cells[2].Value = dateTimeFormat[y].Split(Convert.ToChar(","))[1]; break;
                             }
                             y++;

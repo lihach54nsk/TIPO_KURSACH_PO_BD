@@ -11,15 +11,6 @@ namespace TIPO_KURSACH
 {
     class Documents
     {
-        public string ParseToFormat(string data)
-        {
-            CultureInfo cultureInfoRU = new CultureInfo("ru-RU");
-
-            var date = DateTime.Parse(data, cultureInfoRU);
-
-            return date.ToString();
-        }
-
         public void CreateCheckDocument(int IDComputer, string lastNameClient, string firstNameClient, string otchestvo, string dateTimeBegin, string dateTimeEnd, string money)
         {
             Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
@@ -40,134 +31,152 @@ namespace TIPO_KURSACH
                 headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlack;
                 headerRange.Font.Size = 10;
                 headerRange.Text = "Счёт по ФИО " + lastNameClient + " " + firstNameClient + " " + otchestvo;
+            }
 
-                Microsoft.Office.Interop.Word.Paragraph txt = document.Content.Paragraphs.Add(ref missing);
+            //Добавление нижнего колонтитула
+            foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
+            {
+                //
+                Microsoft.Office.Interop.Word.Range footerRange =
+        wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                //Установка цвета текста
+                footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdAuto;
+                //Размер
+                footerRange.Font.Size = 10;
+                //Установка расположения по центру
+                footerRange.ParagraphFormat.Alignment =
+                    Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                //Установка текста для вывода в нижнем колонтитуле
+                footerRange.Text = "Подпись сотрудника:_____________                               Подпись клиента:_____________";
+            }
 
-                Table table = document.Tables.Add(txt.Range, 2, 7, ref missing, ref missing);
+            Microsoft.Office.Interop.Word.Paragraph txt = document.Content.Paragraphs.Add(ref missing);
 
-                table.Borders.Enable = 1;
+            Table table = document.Tables.Add(txt.Range, 2, 7, ref missing, ref missing);
 
-                winword.Visible = true;
+            table.Borders.Enable = 1;
 
-                for (int i = 0; i < 2; i++)
+            winword.Visible = true;
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < table.Columns.Count; j++)
                 {
-                    for (int j = 0; j < table.Columns.Count; j++)
-                    {
-                        var cell = table.Cell(i + 1, j + 1);
+                    var cell = table.Cell(i + 1, j + 1);
 
-                        if (cell.RowIndex == 1)
+                    if (cell.RowIndex == 1)
+                    {
+                        switch (j)
                         {
-                            switch (j)
-                            {
-                                case 0:
-                                    cell.Range.Text = "Номер компьютера";
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 1:
-                                    cell.Range.Text = "Фамилия";
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 2:
-                                    cell.Range.Text = "Имя";
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 3:
-                                    cell.Range.Text = "Отчество";
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 4:
-                                    cell.Range.Text = "Время начала работы";
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 5:
-                                    cell.Range.Text = "Время окончания работы";
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 6:
-                                    cell.Range.Text = "Счёт";
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                            }
+                            case 0:
+                                cell.Range.Text = "Номер компьютера";
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 1:
+                                cell.Range.Text = "Фамилия";
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 2:
+                                cell.Range.Text = "Имя";
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 3:
+                                cell.Range.Text = "Отчество";
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 4:
+                                cell.Range.Text = "Время начала работы";
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 5:
+                                cell.Range.Text = "Время окончания работы";
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 6:
+                                cell.Range.Text = "Счёт";
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
                         }
-                        else
+                    }
+                    else
+                    {
+                        switch (j)
                         {
-                            switch (j)
-                            {
-                                case 0:
-                                    cell.Range.Text = IDComputer.ToString();
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 1:
-                                    cell.Range.Text = lastNameClient;
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 2:
-                                    cell.Range.Text = firstNameClient;
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 3:
-                                    cell.Range.Text = otchestvo;
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 4:
-                                    cell.Range.Text = dateTimeBegin;
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 5:
-                                    cell.Range.Text = dateTimeEnd;
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                                case 6:
-                                    cell.Range.Text = money;
-                                    cell.Range.Font.Name = "verdana";
-                                    cell.Range.Font.Size = 10;
-                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                            }
+                            case 0:
+                                cell.Range.Text = IDComputer.ToString();
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 1:
+                                cell.Range.Text = lastNameClient;
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 2:
+                                cell.Range.Text = firstNameClient;
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 3:
+                                cell.Range.Text = otchestvo;
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 4:
+                                cell.Range.Text = dateTimeBegin;
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 5:
+                                cell.Range.Text = dateTimeEnd;
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            case 6:
+                                cell.Range.Text = money;
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
                         }
                     }
                 }
             }
+
             
         }
 
