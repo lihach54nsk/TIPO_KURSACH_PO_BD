@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
 namespace TIPO_KURSACH
 {
     public partial class Clients_Form : Form
