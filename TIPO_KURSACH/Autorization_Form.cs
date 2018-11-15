@@ -19,7 +19,7 @@ namespace TIPO_KURSACH
         {
             InitializeComponent();
 
-            string comboBoxString = "SELECT lastName, firstName, otchestvo FROM dbo.Workers";
+            string comboBoxString = "SELECT Id_position, lastName, firstName, otchestvo FROM dbo.Workers";
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
@@ -34,7 +34,7 @@ namespace TIPO_KURSACH
             while (data.Read())
             {
                 IDataRecord record = data;
-                comboBoxStringFormat[j] = string.Format("{0}%{1}%{2}", record.GetValue(0).ToString(), record.GetValue(1).ToString(), record.GetValue(2).ToString());
+                comboBoxStringFormat[j] = string.Format("{0}%{1}%{2}%{3}", record.GetValue(0).ToString(), record.GetValue(1).ToString(), record.GetValue(2).ToString(),record.GetValue(3).ToString());
                 j++;
             }
             sqlConnection.Close();
@@ -42,15 +42,23 @@ namespace TIPO_KURSACH
             int i = 0;
             while (comboBoxStringFormat[i] != null)
             {
-                SignInComboBox.Items.Add((comboBoxStringFormat[i].Split(Convert.ToChar("%"))[0].ToString() + " " 
+                SignInComboBox.Items.Add((comboBoxStringFormat[i].Split(Convert.ToChar("%"))[0].ToString() + " - " 
                     + comboBoxStringFormat[i].Split(Convert.ToChar("%"))[1].ToString() + " " 
-                    + comboBoxStringFormat[i].Split(Convert.ToChar("%"))[2].ToString()).ToString());
+                    + comboBoxStringFormat[i].Split(Convert.ToChar("%"))[2].ToString() + " "
+                    + comboBoxStringFormat[i].Split(Convert.ToChar("%"))[3].ToString()).ToString());
                 i++;
             }
         }
 
         private void SignInButton_Click(object sender, EventArgs e)
         {
+            string singInString = "SELECT * FROM dbo.Autorization WHERE Id_workers = '{0}'";
+
+
+        }
+
+        private void SignUpButton_Click(object sender, EventArgs e)
+        { 
 
         }
     }
