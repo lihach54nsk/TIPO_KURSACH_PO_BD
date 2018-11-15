@@ -241,8 +241,8 @@ namespace TIPO_KURSACH
             var IDWorkPlace = ClientsComputersDataGridView.Rows[ClientsComputersDataGridView.SelectedCells[0].RowIndex].Cells[0].Value;
             Documents documents = new Documents();
 
-            string addReceipsString = "INSERT INTO dbo.Receips (Id_WorkPlace, Id_client, dateTime_Begin, dateTime_End, traffic) " +
-                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')";
+            string addReceipsString = "INSERT INTO dbo.Receips (Id_WorkPlace, Id_client, dateTime_Begin, dateTime_End, traffic , receips) " +
+                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')";
             string computerString = "SELECT * FROM dbo.Clients_Data WHERE Id_WorkPlace = '{0}'";
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
@@ -272,16 +272,9 @@ namespace TIPO_KURSACH
 
             sqlConnection.Close();
 
-            string addReceipsFormat = string.Format(addReceipsString, IDWorkPlace,
-                IDClient, dateTime_Begin, dateTime_End, traffic);
+            
 
-            sqlConnection.Open();
-
-            SqlCommand receipsCommand = new SqlCommand(addReceipsFormat, sqlConnection);
-
-            receipsCommand.ExecuteNonQuery();
-
-            sqlConnection.Close();
+            
 
             string clientInfo = "SELECT * FROM dbo.Clients WHERE Id_client = '{0}'";
 
@@ -329,6 +322,17 @@ namespace TIPO_KURSACH
             SqlCommand sqlCommand = new SqlCommand(releaseFormat, sqlConnection);
 
             sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+
+            string addReceipsFormat = string.Format(addReceipsString, IDWorkPlace,
+                IDClient, dateTime_Begin, dateTime_End, traffic, money);
+
+            sqlConnection.Open();
+
+            SqlCommand receipsCommand = new SqlCommand(addReceipsFormat, sqlConnection);
+
+            receipsCommand.ExecuteNonQuery();
 
             sqlConnection.Close();
 
@@ -443,7 +447,7 @@ namespace TIPO_KURSACH
 
         private void ReceipsButton_Click(object sender, EventArgs e)
         {
-            
+            string receipsString = "SELECT * FROM dbo.Receips WHERE Id_WorkPlace = '{0}'";
         }
     }
 }

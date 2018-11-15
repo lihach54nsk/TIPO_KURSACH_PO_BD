@@ -45,6 +45,10 @@
             this.DeleteReserveComputerButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
             this.ReceipsButton = new System.Windows.Forms.Button();
+            this.dateTimeReceipsBeginPicker = new System.Windows.Forms.DateTimePicker();
+            this.dateTimerReceipsEndPicker = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsComputersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,19 +196,59 @@
             // 
             // ReceipsButton
             // 
-            this.ReceipsButton.Location = new System.Drawing.Point(12, 233);
+            this.ReceipsButton.Location = new System.Drawing.Point(12, 265);
             this.ReceipsButton.Name = "ReceipsButton";
-            this.ReceipsButton.Size = new System.Drawing.Size(283, 23);
+            this.ReceipsButton.Size = new System.Drawing.Size(527, 23);
             this.ReceipsButton.TabIndex = 29;
             this.ReceipsButton.Text = "Выручка";
             this.ReceipsButton.UseVisualStyleBackColor = true;
             this.ReceipsButton.Click += new System.EventHandler(this.ReceipsButton_Click);
             // 
+            // dateTimeReceipsBeginPicker
+            // 
+            this.dateTimeReceipsBeginPicker.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dateTimeReceipsBeginPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimeReceipsBeginPicker.Location = new System.Drawing.Point(110, 239);
+            this.dateTimeReceipsBeginPicker.Name = "dateTimeReceipsBeginPicker";
+            this.dateTimeReceipsBeginPicker.Size = new System.Drawing.Size(164, 20);
+            this.dateTimeReceipsBeginPicker.TabIndex = 30;
+            // 
+            // dateTimerReceipsEndPicker
+            // 
+            this.dateTimerReceipsEndPicker.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dateTimerReceipsEndPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimerReceipsEndPicker.Location = new System.Drawing.Point(375, 239);
+            this.dateTimerReceipsEndPicker.Name = "dateTimerReceipsEndPicker";
+            this.dateTimerReceipsEndPicker.Size = new System.Drawing.Size(164, 20);
+            this.dateTimerReceipsEndPicker.TabIndex = 31;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 239);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 13);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Начало периода: ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(280, 239);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 13);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Конец периода: ";
+            // 
             // Clients_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 259);
+            this.ClientSize = new System.Drawing.Size(800, 293);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.dateTimerReceipsEndPicker);
+            this.Controls.Add(this.dateTimeReceipsBeginPicker);
             this.Controls.Add(this.ReceipsButton);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.DeleteReserveComputerButton);
@@ -249,5 +293,9 @@
         private System.Windows.Forms.Button DeleteReserveComputerButton;
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.Button ReceipsButton;
+        private System.Windows.Forms.DateTimePicker dateTimeReceipsBeginPicker;
+        private System.Windows.Forms.DateTimePicker dateTimerReceipsEndPicker;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
