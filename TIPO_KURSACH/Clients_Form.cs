@@ -270,11 +270,7 @@ namespace TIPO_KURSACH
 
             string traffic = record.GetValue(4).ToString();
 
-            sqlConnection.Close();
-
-            
-
-            
+            sqlConnection.Close();           
 
             string clientInfo = "SELECT * FROM dbo.Clients WHERE Id_client = '{0}'";
 
@@ -447,7 +443,32 @@ namespace TIPO_KURSACH
 
         private void ReceipsButton_Click(object sender, EventArgs e)
         {
-            string receipsString = "SELECT * FROM dbo.Receips WHERE Id_WorkPlace = '{0}'";
+            string receipsString = "SELECT Id_WorkPlace, SUM(receips) FROM dbo.Receips WHERE dateTime_Begin > '{0}' AND dateTime_End < '{1}' GROUP BY Id_WorkPlace";
+            string[] receipsFormat = new string[1000];
+            string receipsStringFormat = string.Format(receipsString, dateTimeReceipsBeginPicker.Text, dateTimerReceipsEndPicker.Text);
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(receipsStringFormat, sqlConnection);
+
+            var data=sqlCommand.ExecuteReader();
+
+            int i = 0;
+
+            while (data.Read())
+            {
+                IDataRecord record = data;
+                receipsFormat[i] = string.Format("{0}%{1}", record.GetValue(0).ToString(), record.GetValue(1).ToString());
+                i++;
+            }
+
+            sqlConnection.Close();
+
+            Documents documents = new Documents();
+
+            documents.CreateReceipsDocument(i, receipsFormat);
         }
     }
 }

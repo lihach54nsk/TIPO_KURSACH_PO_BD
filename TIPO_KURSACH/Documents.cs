@@ -178,7 +178,7 @@ namespace TIPO_KURSACH
             }
         }
 
-        public void CreateReceipsDocument()
+        public void CreateReceipsDocument(int rows, string[] receips)
         {
 
         }
