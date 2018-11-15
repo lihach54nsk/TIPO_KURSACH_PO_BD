@@ -52,6 +52,8 @@ namespace TIPO_KURSACH
         {
             string queryString = "INSERT INTO dbo.Workers (Id_position, lastName, firstName, otchestvo, address, date) " +
                 "VALUES ('{0}', N'{1}', N'{2}', N'{3}', N'{4}', '{5}')";
+            string addToAutorizationString = "INSERT INTO dbo.Autorization (Id_workers, Password) " +
+                "VALUES ('{0}', '{1}')";
             string queryPositionString = "SELECT * FROM dbo.Positions WHERE Position = N'{0}'";
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
@@ -77,6 +79,30 @@ namespace TIPO_KURSACH
             SqlCommand command = new SqlCommand(insertFormat, sqlConnection);
 
             command.ExecuteNonQuery();
+
+            sqlConnection.Close();
+
+            string findIDWorker = "SELECT IDENT_CURRENT ('dbo.Workers')";
+
+            sqlConnection.Open();
+
+            SqlCommand IDCommand = new SqlCommand(findIDWorker, sqlConnection);
+
+            var IDdata = IDCommand.ExecuteReader();
+            IDdata.Read();
+            IDataRecord IDrecord = IDdata;
+
+            string IdWorker = IDrecord.GetValue(0).ToString();
+
+            sqlConnection.Close();
+
+            string addToAutorizationStringFormat = string.Format(addToAutorizationString, IdWorker, "123456qwerty".GetHashCode());
+
+            sqlConnection.Open();
+
+            SqlCommand autorizationCommand = new SqlCommand(addToAutorizationStringFormat, sqlConnection);
+
+            autorizationCommand.ExecuteNonQuery();
 
             sqlConnection.Close();
         }

@@ -19,7 +19,7 @@ namespace TIPO_KURSACH
         {
             InitializeComponent();
 
-            string comboBoxString = "SELECT Id_position, lastName, firstName, otchestvo FROM dbo.Workers";
+            string comboBoxString = "SELECT Id_workers, lastName, firstName, otchestvo FROM dbo.Workers";
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
