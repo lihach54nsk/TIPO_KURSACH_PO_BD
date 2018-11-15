@@ -440,5 +440,10 @@ namespace TIPO_KURSACH
                 }
             }
         }
+
+        private void ReceipsButton_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

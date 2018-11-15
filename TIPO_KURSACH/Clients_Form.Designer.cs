@@ -44,6 +44,7 @@
             this.CheckButton = new System.Windows.Forms.Button();
             this.DeleteReserveComputerButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
+            this.ReceipsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsComputersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -189,11 +190,22 @@
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
+            // ReceipsButton
+            // 
+            this.ReceipsButton.Location = new System.Drawing.Point(12, 233);
+            this.ReceipsButton.Name = "ReceipsButton";
+            this.ReceipsButton.Size = new System.Drawing.Size(283, 23);
+            this.ReceipsButton.TabIndex = 29;
+            this.ReceipsButton.Text = "Выручка";
+            this.ReceipsButton.UseVisualStyleBackColor = true;
+            this.ReceipsButton.Click += new System.EventHandler(this.ReceipsButton_Click);
+            // 
             // Clients_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 236);
+            this.ClientSize = new System.Drawing.Size(800, 259);
+            this.Controls.Add(this.ReceipsButton);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.DeleteReserveComputerButton);
             this.Controls.Add(this.CheckButton);
@@ -236,5 +248,6 @@
         private System.Windows.Forms.Button CheckButton;
         private System.Windows.Forms.Button DeleteReserveComputerButton;
         private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.Button ReceipsButton;
     }
 }
