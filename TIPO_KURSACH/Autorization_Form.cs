@@ -54,7 +54,24 @@ namespace TIPO_KURSACH
         {
             string singInString = "SELECT * FROM dbo.Autorization WHERE Id_workers = '{0}'";
 
+            string signInStringFormat = string.Format(singInString, SignInComboBox.Text.Split(Convert.ToChar(" "))[0].ToString());
 
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(signInStringFormat, sqlConnection);
+
+            var data = sqlCommand.ExecuteReader();
+            data.Read();
+            IDataRecord record = data;
+
+            var hash = record.GetValue(1).ToString();
+
+            sqlConnection.Close();
+
+            if (PasswordTextBox.Text.GetHashCode() == Convert.ToInt32(hash)) MessageBox.Show("Успешно");
+            else MessageBox.Show("Ты - пидор!");
         }
 
         private void SignUpButton_Click(object sender, EventArgs e)

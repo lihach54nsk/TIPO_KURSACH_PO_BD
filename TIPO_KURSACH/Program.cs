@@ -14,6 +14,8 @@ namespace TIPO_KURSACH
         [STAThread]
         static void Main()
         {
+            var hash = "pidor";
+            var code = hash.GetHashCode();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
