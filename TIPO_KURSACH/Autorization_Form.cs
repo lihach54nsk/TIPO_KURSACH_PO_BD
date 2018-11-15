@@ -75,8 +75,20 @@ namespace TIPO_KURSACH
         }
 
         private void SignUpButton_Click(object sender, EventArgs e)
-        { 
+        {
+            string singUpString = "UPDATE dbo.Autorization SET Password = '{0}' WHERE Id_workers = '{1}'";
 
+            string signUpStringFormat = string.Format(singUpString, PasswordTextBox.Text.GetHashCode().ToString(), SignInComboBox.Text.Split(Convert.ToChar(" "))[0].ToString());      
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(signUpStringFormat, sqlConnection);
+
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
         }
     }
 }

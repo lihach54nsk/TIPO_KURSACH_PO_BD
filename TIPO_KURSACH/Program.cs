@@ -13,15 +13,13 @@ namespace TIPO_KURSACH
         /// </summary>
         [STAThread]
         static void Main()
-        {
-            var hash = "pidor";
-            var code = hash.GetHashCode();
+        {            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Autorization_Form());
             Application.Run(new Form1());
             Application.Run(new Computers_Form());
-            Application.Run(new Clients_Form());
-            Application.Run(new Autorization_Form());
+            Application.Run(new Clients_Form());            
         }
     }
 }
