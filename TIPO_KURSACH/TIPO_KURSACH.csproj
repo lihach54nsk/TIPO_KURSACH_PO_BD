@@ -78,6 +78,12 @@
       <DependentUpon>Add_Computer_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Autorization.cs" />
+    <Compile Include="Autorization_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Autorization_Form.Designer.cs">
+      <DependentUpon>Autorization_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Add_Computer_Form.resx">
       <DependentUpon>Add_Computer_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Autorization_Form.resx">
+      <DependentUpon>Autorization_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clients_Form.resx">
       <DependentUpon>Clients_Form.cs</DependentUpon>

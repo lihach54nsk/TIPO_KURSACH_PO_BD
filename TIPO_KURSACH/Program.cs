@@ -19,6 +19,7 @@ namespace TIPO_KURSACH
             Application.Run(new Form1());
             Application.Run(new Computers_Form());
             Application.Run(new Clients_Form());
+            Application.Run(new Autorization_Form());
         }
     }
 }
