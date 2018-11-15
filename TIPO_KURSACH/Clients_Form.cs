@@ -270,7 +270,7 @@ namespace TIPO_KURSACH
 
             string traffic = record.GetValue(4).ToString();
 
-            sqlConnection.Close();           
+            sqlConnection.Close();
 
             string clientInfo = "SELECT * FROM dbo.Clients WHERE Id_client = '{0}'";
 
@@ -453,7 +453,7 @@ namespace TIPO_KURSACH
 
             SqlCommand sqlCommand = new SqlCommand(receipsStringFormat, sqlConnection);
 
-            var data=sqlCommand.ExecuteReader();
+            var data = sqlCommand.ExecuteReader();
 
             int i = 0;
 
@@ -466,9 +466,11 @@ namespace TIPO_KURSACH
 
             sqlConnection.Close();
 
+            if (i == 0) { MessageBox.Show("Задан неправильный интервал"); return; }
+
             Documents documents = new Documents();
 
-            documents.CreateReceipsDocument(i, receipsFormat);
+            documents.CreateReceipsDocument(i, receipsFormat, dateTimeReceipsBeginPicker.Text, dateTimerReceipsEndPicker.Text);
         }
     }
 }
