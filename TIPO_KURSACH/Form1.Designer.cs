@@ -44,6 +44,7 @@
             this.button_Update = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.PositionComboBox = new System.Windows.Forms.ComboBox();
+            this.button_Delete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,7 +140,7 @@
             // 
             // buttonShow
             // 
-            this.buttonShow.Location = new System.Drawing.Point(11, 234);
+            this.buttonShow.Location = new System.Drawing.Point(11, 268);
             this.buttonShow.Name = "buttonShow";
             this.buttonShow.Size = new System.Drawing.Size(277, 28);
             this.buttonShow.TabIndex = 12;
@@ -182,11 +183,22 @@
             this.PositionComboBox.Size = new System.Drawing.Size(164, 21);
             this.PositionComboBox.TabIndex = 17;
             // 
+            // button_Delete
+            // 
+            this.button_Delete.Location = new System.Drawing.Point(11, 234);
+            this.button_Delete.Name = "button_Delete";
+            this.button_Delete.Size = new System.Drawing.Size(277, 28);
+            this.button_Delete.TabIndex = 18;
+            this.button_Delete.Text = "Удалить";
+            this.button_Delete.UseVisualStyleBackColor = true;
+            this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 269);
+            this.ClientSize = new System.Drawing.Size(906, 302);
+            this.Controls.Add(this.button_Delete);
             this.Controls.Add(this.PositionComboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button_Update);
@@ -229,6 +241,7 @@
         private System.Windows.Forms.Button button_Update;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox PositionComboBox;
+        private System.Windows.Forms.Button button_Delete;
     }
 }
 

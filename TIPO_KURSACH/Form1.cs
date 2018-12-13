@@ -174,5 +174,34 @@ namespace TIPO_KURSACH
 
             update_Form.Show();
         }
+
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            var IDWorker = dataGridViewShow.Rows[dataGridViewShow.SelectedCells[0].RowIndex].Cells[0].Value;
+
+            string deleteStringFromWorkers = "DELETE FROM dbo.Workers WHERE Id_workers = '{0}'";
+            string deleteStringFromAutorization = "DELETE FROM dbo.Autorization WHERE Id_workers = '{0}'";
+
+            string deleteStringFromWorkersFormat = string.Format(deleteStringFromWorkers, IDWorker);
+            string deleteStringFromAutorizationFormat = string.Format(deleteStringFromAutorization, IDWorker);
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            sqlConnection.Open();
+
+            SqlCommand deleteFromWorkersCommand = new SqlCommand(deleteStringFromWorkersFormat, sqlConnection);
+
+            deleteFromWorkersCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();            
+
+            sqlConnection.Open();
+
+            SqlCommand deleteFromAutorizationCommand = new SqlCommand(deleteStringFromAutorizationFormat, sqlConnection);
+
+            deleteFromAutorizationCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+        }
     }
 }
