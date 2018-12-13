@@ -137,6 +137,7 @@
             this.date_BirthTextBox.Name = "date_BirthTextBox";
             this.date_BirthTextBox.Size = new System.Drawing.Size(164, 20);
             this.date_BirthTextBox.TabIndex = 10;
+            this.date_BirthTextBox.Text = "гггг-мм-дд";
             // 
             // buttonShow
             // 
