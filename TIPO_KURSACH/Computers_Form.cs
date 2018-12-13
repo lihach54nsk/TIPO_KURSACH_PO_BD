@@ -104,7 +104,7 @@ namespace TIPO_KURSACH
                     record.GetValue(5).ToString(),
                     record.GetValue(7).ToString(),
                     record.GetValue(9).ToString());
-                    j++;
+                j++;
             }
 
             ComputersDataGridView.RowCount = j;

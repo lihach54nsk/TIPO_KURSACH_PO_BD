@@ -14,7 +14,7 @@ namespace TIPO_KURSACH
         //
 
         public int position = 0;
-        
+
         public static string GetConnectionString() => connectionString;
-    }    
+    }
 }

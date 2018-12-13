@@ -18,7 +18,7 @@ namespace TIPO_KURSACH
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);            
+            Application.SetCompatibleTextRenderingDefault(false);
 
             while (true)
             {
