@@ -15,6 +15,8 @@ namespace TIPO_KURSACH
     {
         string connectionString = Autorization.GetConnectionString();
 
+        Autorization autorization = new Autorization();
+
         public Autorization_Form()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace TIPO_KURSACH
             while (data.Read())
             {
                 IDataRecord record = data;
-                comboBoxStringFormat[j] = string.Format("{0}%{1}%{2}%{3}", record.GetValue(0).ToString(), record.GetValue(1).ToString(), record.GetValue(2).ToString(),record.GetValue(3).ToString());
+                comboBoxStringFormat[j] = string.Format("{0}%{1}%{2}%{3}", record.GetValue(0).ToString(), record.GetValue(1).ToString(), record.GetValue(2).ToString(), record.GetValue(3).ToString());
                 j++;
             }
             sqlConnection.Close();
@@ -42,8 +44,8 @@ namespace TIPO_KURSACH
             int i = 0;
             while (comboBoxStringFormat[i] != null)
             {
-                SignInComboBox.Items.Add((comboBoxStringFormat[i].Split(Convert.ToChar("%"))[0].ToString() + " - " 
-                    + comboBoxStringFormat[i].Split(Convert.ToChar("%"))[1].ToString() + " " 
+                SignInComboBox.Items.Add((comboBoxStringFormat[i].Split(Convert.ToChar("%"))[0].ToString() + " - "
+                    + comboBoxStringFormat[i].Split(Convert.ToChar("%"))[1].ToString() + " "
                     + comboBoxStringFormat[i].Split(Convert.ToChar("%"))[2].ToString() + " "
                     + comboBoxStringFormat[i].Split(Convert.ToChar("%"))[3].ToString()).ToString());
                 i++;
@@ -70,15 +72,38 @@ namespace TIPO_KURSACH
 
             sqlConnection.Close();
 
-            if (PasswordTextBox.Text.GetHashCode() == Convert.ToInt32(hash)) MessageBox.Show("Успешно");
-            else MessageBox.Show("Ты - пидор!");
+            if (PasswordTextBox.Text.GetHashCode() == Convert.ToInt32(hash))
+            {
+                string getPositionIDString = "SELECT Id_position FROM dbo.Workers WHERE Id_workers = '{0}'";
+
+                string getPositionIDFormat = string.Format(getPositionIDString, SignInComboBox.Text.Split(Convert.ToChar(" "))[0].ToString());
+
+                sqlConnection.Open();
+
+                SqlCommand getPositionIDCommand = new SqlCommand(getPositionIDFormat, sqlConnection);
+
+                var positionIDData = getPositionIDCommand.ExecuteReader();
+                positionIDData.Read();
+                IDataRecord positionIDRecord = positionIDData;
+
+                var position = positionIDRecord.GetValue(0).ToString();
+
+                sqlConnection.Close();
+
+                autorization.position = Convert.ToInt32(position);
+
+                MessageBox.Show("Успешно");
+            }
+            else MessageBox.Show("Попробуйте снова");
         }
+
+        public int GetPositionID() => autorization.position;
 
         private void SignUpButton_Click(object sender, EventArgs e)
         {
             string singUpString = "UPDATE dbo.Autorization SET Password = '{0}' WHERE Id_workers = '{1}'";
 
-            string signUpStringFormat = string.Format(singUpString, PasswordTextBox.Text.GetHashCode().ToString(), SignInComboBox.Text.Split(Convert.ToChar(" "))[0].ToString());      
+            string signUpStringFormat = string.Format(singUpString, PasswordTextBox.Text.GetHashCode().ToString(), SignInComboBox.Text.Split(Convert.ToChar(" "))[0].ToString());
 
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 

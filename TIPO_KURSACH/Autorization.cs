@@ -13,6 +13,8 @@ namespace TIPO_KURSACH
         //Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Геральт из Ривии\Documents\TIPO_KURSACH\TIPO_KURSACH\Database1.mdf;Integrated Security = True
         //
 
+        public int position = 0;
+        
         public static string GetConnectionString() => connectionString;
     }    
 }

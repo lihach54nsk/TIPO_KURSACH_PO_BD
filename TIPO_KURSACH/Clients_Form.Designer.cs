@@ -186,7 +186,7 @@
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(15, 142);
+            this.refreshButton.Location = new System.Drawing.Point(12, 142);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(283, 23);
             this.refreshButton.TabIndex = 28;

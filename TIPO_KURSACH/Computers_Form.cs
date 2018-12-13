@@ -15,6 +15,13 @@ namespace TIPO_KURSACH
     {
         string connectionString = Autorization.GetConnectionString();
 
+        Autorization autorization = new Autorization();
+
+        public void SetAutorization(int positionID)
+        {
+            autorization.position = positionID;
+        }
+
         public Computers_Form()
         {
             InitializeComponent();

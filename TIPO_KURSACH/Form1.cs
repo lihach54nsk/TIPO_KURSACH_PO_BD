@@ -15,6 +15,13 @@ namespace TIPO_KURSACH
     {
         string connectionString = Autorization.GetConnectionString();
 
+        Autorization autorization = new Autorization();
+
+        public void SetAutorization(int positionID)
+        {
+            autorization.position = positionID;
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -45,6 +52,13 @@ namespace TIPO_KURSACH
             while (comboFormat[i] != null)
             {
                 PositionComboBox.Items.Add(comboFormat[i].ToString()); i++;
+            }
+
+            if (autorization.position == 1) return;
+            else
+            {
+                button_Add.Visible = false;
+                button_Update.Visible = false;
             }
         }
 
