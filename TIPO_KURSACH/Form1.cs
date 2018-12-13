@@ -22,7 +22,9 @@ namespace TIPO_KURSACH
             autorization.position = positionID;
         }
 
-        public Form1()
+        public Form1() { }
+
+        public void Host()
         {
             InitializeComponent();
 
@@ -193,7 +195,7 @@ namespace TIPO_KURSACH
 
             deleteFromWorkersCommand.ExecuteNonQuery();
 
-            sqlConnection.Close();            
+            sqlConnection.Close();
 
             sqlConnection.Open();
 

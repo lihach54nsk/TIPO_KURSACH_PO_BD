@@ -34,6 +34,7 @@ namespace TIPO_KURSACH
                         Clients_Form clients_Form = new Clients_Form();
 
                         form1.SetAutorization(autorization.position);
+                        form1.Host();
                         computers_Form.SetAutorization(autorization.position);
                         clients_Form.SetAutorization(autorization.position);
 
@@ -48,6 +49,7 @@ namespace TIPO_KURSACH
                         Clients_Form clients_FormZam = new Clients_Form();
 
                         form1Zam.SetAutorization(autorization.position);
+                        form1Zam.Host();
                         computers_FormZam.SetAutorization(autorization.position);
                         clients_FormZam.SetAutorization(autorization.position);
 
