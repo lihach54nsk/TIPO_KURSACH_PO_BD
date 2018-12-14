@@ -202,13 +202,13 @@ namespace TIPO_KURSACH
 
             Microsoft.Office.Interop.Word.Paragraph txt = document.Content.Paragraphs.Add(ref missing);
 
-            Table table = document.Tables.Add(txt.Range, rows, 2, ref missing, ref missing);
+            Table table = document.Tables.Add(txt.Range, rows + 1, 2, ref missing, ref missing);
 
             table.Borders.Enable = 1;
 
             winword.Visible = true;
 
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < rows + 1; i++)
             {
                 for (int j = 0; j < 2; j++)
                 {
@@ -239,14 +239,14 @@ namespace TIPO_KURSACH
                         switch (j)
                         {
                             case 0:
-                                cell.Range.Text = receips[i].Split(Convert.ToChar("%"))[0];
+                                cell.Range.Text = receips[i - 1].Split(Convert.ToChar("%"))[0];
                                 cell.Range.Font.Name = "verdana";
                                 cell.Range.Font.Size = 10;
                                 cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
                                 cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
                                 cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
                             case 1:
-                                cell.Range.Text = receips[i].Split(Convert.ToChar("%"))[1];
+                                cell.Range.Text = receips[i - 1].Split(Convert.ToChar("%"))[1];
                                 cell.Range.Font.Name = "verdana";
                                 cell.Range.Font.Size = 10;
                                 cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
