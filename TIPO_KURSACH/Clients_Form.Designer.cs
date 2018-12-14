@@ -49,6 +49,8 @@
             this.dateTimerReceipsEndPicker = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.RepairButton = new System.Windows.Forms.Button();
+            this.BackFromRepairButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsComputersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -196,7 +198,7 @@
             // 
             // ReceipsButton
             // 
-            this.ReceipsButton.Location = new System.Drawing.Point(12, 265);
+            this.ReceipsButton.Location = new System.Drawing.Point(12, 293);
             this.ReceipsButton.Name = "ReceipsButton";
             this.ReceipsButton.Size = new System.Drawing.Size(527, 23);
             this.ReceipsButton.TabIndex = 29;
@@ -208,7 +210,7 @@
             // 
             this.dateTimeReceipsBeginPicker.CustomFormat = "yyyy-MM-dd hh:mm:ss";
             this.dateTimeReceipsBeginPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimeReceipsBeginPicker.Location = new System.Drawing.Point(110, 239);
+            this.dateTimeReceipsBeginPicker.Location = new System.Drawing.Point(110, 267);
             this.dateTimeReceipsBeginPicker.Name = "dateTimeReceipsBeginPicker";
             this.dateTimeReceipsBeginPicker.Size = new System.Drawing.Size(164, 20);
             this.dateTimeReceipsBeginPicker.TabIndex = 30;
@@ -217,7 +219,7 @@
             // 
             this.dateTimerReceipsEndPicker.CustomFormat = "yyyy-MM-dd hh:mm:ss";
             this.dateTimerReceipsEndPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimerReceipsEndPicker.Location = new System.Drawing.Point(375, 239);
+            this.dateTimerReceipsEndPicker.Location = new System.Drawing.Point(375, 267);
             this.dateTimerReceipsEndPicker.Name = "dateTimerReceipsEndPicker";
             this.dateTimerReceipsEndPicker.Size = new System.Drawing.Size(164, 20);
             this.dateTimerReceipsEndPicker.TabIndex = 31;
@@ -225,7 +227,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 239);
+            this.label6.Location = new System.Drawing.Point(9, 267);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 13);
             this.label6.TabIndex = 32;
@@ -234,17 +236,39 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(280, 239);
+            this.label7.Location = new System.Drawing.Point(280, 267);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 13);
             this.label7.TabIndex = 33;
             this.label7.Text = "Конец периода: ";
             // 
+            // RepairButton
+            // 
+            this.RepairButton.Location = new System.Drawing.Point(12, 233);
+            this.RepairButton.Name = "RepairButton";
+            this.RepairButton.Size = new System.Drawing.Size(127, 23);
+            this.RepairButton.TabIndex = 34;
+            this.RepairButton.Text = "Ремонт";
+            this.RepairButton.UseVisualStyleBackColor = true;
+            this.RepairButton.Click += new System.EventHandler(this.RepairButton_Click);
+            // 
+            // BackFromRepairButton
+            // 
+            this.BackFromRepairButton.Location = new System.Drawing.Point(145, 233);
+            this.BackFromRepairButton.Name = "BackFromRepairButton";
+            this.BackFromRepairButton.Size = new System.Drawing.Size(150, 23);
+            this.BackFromRepairButton.TabIndex = 35;
+            this.BackFromRepairButton.Text = "Снять с ремонта";
+            this.BackFromRepairButton.UseVisualStyleBackColor = true;
+            this.BackFromRepairButton.Click += new System.EventHandler(this.BackFromRepairButton_Click);
+            // 
             // Clients_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 293);
+            this.ClientSize = new System.Drawing.Size(800, 323);
+            this.Controls.Add(this.BackFromRepairButton);
+            this.Controls.Add(this.RepairButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dateTimerReceipsEndPicker);
@@ -297,5 +321,7 @@
         private System.Windows.Forms.DateTimePicker dateTimerReceipsEndPicker;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button RepairButton;
+        private System.Windows.Forms.Button BackFromRepairButton;
     }
 }

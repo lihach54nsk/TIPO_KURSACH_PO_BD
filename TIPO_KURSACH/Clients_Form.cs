@@ -479,5 +479,43 @@ namespace TIPO_KURSACH
 
             documents.CreateReceipsDocument(i, receipsFormat, dateTimeReceipsBeginPicker.Text, dateTimerReceipsEndPicker.Text);
         }
+
+        private void RepairButton_Click(object sender, EventArgs e)
+        {
+            var IDWorkPlace = ClientsComputersDataGridView.Rows[ClientsComputersDataGridView.SelectedCells[0].RowIndex].Cells[0].Value;
+
+            string repairString = "UPDATE dbo.State SET STATE = '2' WHERE Id_WorkPlace = '{0}'";
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            string repairStringFormat = string.Format(repairString, IDWorkPlace);
+
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(repairStringFormat, sqlConnection);
+
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+        }
+
+        private void BackFromRepairButton_Click(object sender, EventArgs e)
+        {
+            var IDWorkPlace = ClientsComputersDataGridView.Rows[ClientsComputersDataGridView.SelectedCells[0].RowIndex].Cells[0].Value;
+
+            string repairString = "UPDATE dbo.State SET STATE = '0' WHERE Id_WorkPlace = '{0}'";
+
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+
+            string repairStringFormat = string.Format(repairString, IDWorkPlace);
+
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(repairStringFormat, sqlConnection);
+
+            sqlCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+        }
     }
 }
