@@ -10,9 +10,6 @@ namespace TIPO_KURSACH
     {
         static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Геральт из Ривии\Desktop\TIPO_KURSACH\TIPO_KURSACH\Database1.mdf;Integrated Security=True";
 
-        //Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Геральт из Ривии\Documents\TIPO_KURSACH\TIPO_KURSACH\Database1.mdf;Integrated Security = True
-        //
-
         public int position = 0;
 
         public static string GetConnectionString() => connectionString;
