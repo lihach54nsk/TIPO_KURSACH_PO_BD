@@ -24,6 +24,7 @@ namespace TIPO_KURSACH
             {
                 Autorization_Form autorization_Form = new Autorization_Form();
                 Application.Run(autorization_Form);
+                //if (autorization_Form.DialogResult == DialogResult.Cancel) break;
                 autorization.position = autorization_Form.GetPositionID();
 
                 switch (autorization.position)
