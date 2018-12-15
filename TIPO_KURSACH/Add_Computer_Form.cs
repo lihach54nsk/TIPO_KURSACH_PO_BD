@@ -108,6 +108,8 @@ namespace TIPO_KURSACH
 
             sqlConnection.Open();
 
+            MessageBox.Show("Введите периферию");
+
             if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
             {
                 string searchFormat = string.Format(repeatString, add_Change_Form.Data());
@@ -150,6 +152,8 @@ namespace TIPO_KURSACH
 
             sqlConnection.Open();
 
+            MessageBox.Show("Введите характеристики компьютера");
+
             if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
             {
                 string searchFormat = string.Format(repeatString, add_Change_Form.Data());
@@ -191,6 +195,8 @@ namespace TIPO_KURSACH
             Add_Change_Form add_Change_Form = new Add_Change_Form();
 
             sqlConnection.Open();
+
+            MessageBox.Show("Введите ПО");
 
             if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
             {
@@ -248,6 +254,8 @@ namespace TIPO_KURSACH
 
             sqlConnection.Open();
 
+            MessageBox.Show("Введите периферию");
+
             Add_Change_Form add_Change_Form = new Add_Change_Form();
 
             if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
@@ -285,6 +293,8 @@ namespace TIPO_KURSACH
 
             sqlConnection.Open();
 
+            MessageBox.Show("Введите характеристики компьютера");
+
             Add_Change_Form add_Change_Form = new Add_Change_Form();
 
             if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
@@ -321,6 +331,8 @@ namespace TIPO_KURSACH
             sqlConnection.Close();
 
             sqlConnection.Open();
+
+            MessageBox.Show("Введите ПО");
 
             Add_Change_Form add_Change_Form = new Add_Change_Form();
 
@@ -414,6 +426,8 @@ namespace TIPO_KURSACH
             SqlConnection sqlConnection = new SqlConnection(connectionString);
 
             Add_Change_Form add_Change_Form = new Add_Change_Form();
+
+            MessageBox.Show("Введите стоимость работы за час");
 
             if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
             {
@@ -532,6 +546,8 @@ namespace TIPO_KURSACH
 
             Add_Change_Form add_Change_Form = new Add_Change_Form();
 
+            MessageBox.Show("Введите ID компьютера");
+
             if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
             {
                 string computerID = add_Change_Form.Data();
@@ -587,6 +603,8 @@ namespace TIPO_KURSACH
                 updateCommand.ExecuteNonQuery();
 
                 sqlConnection.Close();
+
+                MessageBox.Show("Введите стоимость работы за час (пустота для неизменения)");
 
                 if (add_Change_Form.ShowDialog(this) == DialogResult.OK)
                 {
