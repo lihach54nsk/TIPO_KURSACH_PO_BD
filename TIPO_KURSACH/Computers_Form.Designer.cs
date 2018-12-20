@@ -40,7 +40,7 @@
             this.ComputersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ComputersDataGridView.Location = new System.Drawing.Point(12, 12);
             this.ComputersDataGridView.Name = "ComputersDataGridView";
-            this.ComputersDataGridView.Size = new System.Drawing.Size(776, 152);
+            this.ComputersDataGridView.Size = new System.Drawing.Size(525, 152);
             this.ComputersDataGridView.TabIndex = 0;
             // 
             // AddComputerButton
@@ -55,7 +55,7 @@
             // 
             // DeleteComputerButton
             // 
-            this.DeleteComputerButton.Location = new System.Drawing.Point(617, 170);
+            this.DeleteComputerButton.Location = new System.Drawing.Point(366, 170);
             this.DeleteComputerButton.Name = "DeleteComputerButton";
             this.DeleteComputerButton.Size = new System.Drawing.Size(171, 23);
             this.DeleteComputerButton.TabIndex = 2;
@@ -77,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 201);
+            this.ClientSize = new System.Drawing.Size(545, 201);
             this.Controls.Add(this.ShowComputersButton);
             this.Controls.Add(this.DeleteComputerButton);
             this.Controls.Add(this.AddComputerButton);

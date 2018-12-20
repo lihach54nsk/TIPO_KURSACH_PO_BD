@@ -180,6 +180,13 @@ namespace TIPO_KURSACH
 
         public void CreateReceipsDocument(int rows, string[] receips, string dateTime_Begin, string dateTime_End)
         {
+            double result = 0;
+
+            for (int r = 0; r < rows; r++)
+            {
+                result += Convert.ToDouble(receips[r].Split(Convert.ToChar("%"))[1]);
+            }
+
             Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
             object missing = System.Reflection.Missing.Value;
             object path = @"C:\Users\Геральт из Ривии\Desktop\TIPO_KURSACH\TestDoc.dot";
@@ -202,13 +209,13 @@ namespace TIPO_KURSACH
 
             Microsoft.Office.Interop.Word.Paragraph txt = document.Content.Paragraphs.Add(ref missing);
 
-            Table table = document.Tables.Add(txt.Range, rows + 1, 2, ref missing, ref missing);
+            Table table = document.Tables.Add(txt.Range, rows + 2, 2, ref missing, ref missing);
 
             table.Borders.Enable = 1;
 
             winword.Visible = true;
 
-            for (int i = 0; i < rows + 1; i++)
+            for (int i = 0; i < rows + 2; i++)
             {
                 for (int j = 0; j < 2; j++)
                 {
@@ -231,27 +238,50 @@ namespace TIPO_KURSACH
                                 cell.Range.Font.Size = 10;
                                 cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
                                 cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;                            
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
                         }
                     }
                     else
                     {
-                        switch (j)
+                        if (cell.RowIndex == rows + 2)
                         {
-                            case 0:
-                                cell.Range.Text = receips[i - 1].Split(Convert.ToChar("%"))[0];
-                                cell.Range.Font.Name = "verdana";
-                                cell.Range.Font.Size = 10;
-                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
-                            case 1:
-                                cell.Range.Text = receips[i - 1].Split(Convert.ToChar("%"))[1];
-                                cell.Range.Font.Name = "verdana";
-                                cell.Range.Font.Size = 10;
-                                cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
-                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;                           
+                            switch (j)
+                            {
+                                case 0:
+                                    cell.Range.Text = "Итого";
+                                    cell.Range.Font.Name = "verdana";
+                                    cell.Range.Font.Size = 10;
+                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                                case 1:
+                                    cell.Range.Text = result.ToString();
+                                    cell.Range.Font.Name = "verdana";
+                                    cell.Range.Font.Size = 10;
+                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            }
+                        }
+                        else
+                        {
+                            switch (j)
+                            {
+                                case 0:
+                                    cell.Range.Text = receips[i - 1].Split(Convert.ToChar("%"))[0];
+                                    cell.Range.Font.Name = "verdana";
+                                    cell.Range.Font.Size = 10;
+                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                                case 1:
+                                    cell.Range.Text = receips[i - 1].Split(Convert.ToChar("%"))[1];
+                                    cell.Range.Font.Name = "verdana";
+                                    cell.Range.Font.Size = 10;
+                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorWhite;
+                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter; break;
+                            }
                         }
                     }
                 }

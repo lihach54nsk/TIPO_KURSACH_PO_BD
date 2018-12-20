@@ -154,7 +154,7 @@
             this.dataGridViewShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewShow.Location = new System.Drawing.Point(294, 9);
             this.dataGridViewShow.Name = "dataGridViewShow";
-            this.dataGridViewShow.Size = new System.Drawing.Size(600, 151);
+            this.dataGridViewShow.Size = new System.Drawing.Size(600, 287);
             this.dataGridViewShow.TabIndex = 13;
             // 
             // button_Update

@@ -22,9 +22,13 @@ namespace TIPO_KURSACH
 
             while (true)
             {
+                int form = 0;
+                //Menu menu = new Menu();
+                //Application.Run(menu);
+                //form = menu.GetForm();
+
                 Autorization_Form autorization_Form = new Autorization_Form();
                 Application.Run(autorization_Form);
-                //if (autorization_Form.DialogResult == DialogResult.Cancel) break;
                 autorization.position = autorization_Form.GetPositionID();
 
                 switch (autorization.position)
