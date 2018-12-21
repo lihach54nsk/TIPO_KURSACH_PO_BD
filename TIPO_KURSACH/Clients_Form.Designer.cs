@@ -130,7 +130,7 @@
             // 
             // dateTimePickerBegin
             // 
-            this.dateTimePickerBegin.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dateTimePickerBegin.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dateTimePickerBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerBegin.Location = new System.Drawing.Point(131, 90);
             this.dateTimePickerBegin.Name = "dateTimePickerBegin";
@@ -139,7 +139,7 @@
             // 
             // dateTimePickerEnd
             // 
-            this.dateTimePickerEnd.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dateTimePickerEnd.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerEnd.Location = new System.Drawing.Point(131, 116);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
@@ -208,7 +208,7 @@
             // 
             // dateTimeReceipsBeginPicker
             // 
-            this.dateTimeReceipsBeginPicker.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dateTimeReceipsBeginPicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dateTimeReceipsBeginPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimeReceipsBeginPicker.Location = new System.Drawing.Point(110, 267);
             this.dateTimeReceipsBeginPicker.Name = "dateTimeReceipsBeginPicker";
@@ -217,7 +217,7 @@
             // 
             // dateTimerReceipsEndPicker
             // 
-            this.dateTimerReceipsEndPicker.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dateTimerReceipsEndPicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dateTimerReceipsEndPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimerReceipsEndPicker.Location = new System.Drawing.Point(375, 267);
             this.dateTimerReceipsEndPicker.Name = "dateTimerReceipsEndPicker";
