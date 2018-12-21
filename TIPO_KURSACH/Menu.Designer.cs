@@ -35,6 +35,7 @@
             // 
             // WorkersButton
             // 
+            this.WorkersButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.WorkersButton.Location = new System.Drawing.Point(12, 12);
             this.WorkersButton.Name = "WorkersButton";
             this.WorkersButton.Size = new System.Drawing.Size(132, 122);
@@ -45,6 +46,7 @@
             // 
             // ComputersButton
             // 
+            this.ComputersButton.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.ComputersButton.Location = new System.Drawing.Point(150, 12);
             this.ComputersButton.Name = "ComputersButton";
             this.ComputersButton.Size = new System.Drawing.Size(132, 122);
@@ -55,6 +57,7 @@
             // 
             // ClientsButton
             // 
+            this.ClientsButton.DialogResult = System.Windows.Forms.DialogResult.No;
             this.ClientsButton.Location = new System.Drawing.Point(288, 12);
             this.ClientsButton.Name = "ClientsButton";
             this.ClientsButton.Size = new System.Drawing.Size(132, 122);

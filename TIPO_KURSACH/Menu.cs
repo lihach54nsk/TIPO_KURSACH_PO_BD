@@ -17,18 +17,22 @@ namespace TIPO_KURSACH
             InitializeComponent();
         }
 
-        int form = 0;
-
         static Autorization autorization = new Autorization();
+
+        public void SetAutorization(int position)
+        {
+            autorization.position = position;
+        }
+
+        int form = 0;
 
         public int GetForm() => form;
 
         private void WorkersButton_Click(object sender, EventArgs e)
         {
-            Autorization_Form autorization_Form = new Autorization_Form();
-            autorization_Form.Show();
-            //Application.Run(autorization_Form);
-            autorization.position = autorization_Form.GetPositionID();
+            // OK - Workers
+            // Yes - Компьютеры
+            // No - Клиенты
 
             switch (autorization.position)
             {
@@ -39,7 +43,7 @@ namespace TIPO_KURSACH
                     form1.Host();
 
                     form1.Show();
-                   // Application.Run(form1);
+                    // Application.Run(form1);
                     break;
 
                 case 2: // зам админа
@@ -64,10 +68,6 @@ namespace TIPO_KURSACH
 
         private void ComputersButton_Click(object sender, EventArgs e)
         {
-            Autorization_Form autorization_Form = new Autorization_Form();
-            Application.Run(autorization_Form);
-            autorization.position = autorization_Form.GetPositionID();
-
             switch (autorization.position)
             {
                 case 1: // админ
@@ -76,7 +76,7 @@ namespace TIPO_KURSACH
                     computers_Form.SetAutorization(autorization.position);
 
                     computers_Form.Show();
-                   // Application.Run(computers_Form);
+                    // Application.Run(computers_Form);
                     break;
 
                 case 2: // зам админа
@@ -100,10 +100,6 @@ namespace TIPO_KURSACH
 
         private void ClientsButton_Click(object sender, EventArgs e)
         {
-            Autorization_Form autorization_Form = new Autorization_Form();
-            Application.Run(autorization_Form);
-            autorization.position = autorization_Form.GetPositionID();
-
             switch (autorization.position)
             {
                 case 1: // админ
@@ -112,7 +108,7 @@ namespace TIPO_KURSACH
                     clients_Form.SetAutorization(autorization.position);
 
                     clients_Form.Show();
-                   // Application.Run(clients_Form);
+                    // Application.Run(clients_Form);
                     break;
 
                 case 2: // зам админа
