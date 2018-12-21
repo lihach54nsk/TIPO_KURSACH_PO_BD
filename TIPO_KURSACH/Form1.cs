@@ -152,7 +152,7 @@ namespace TIPO_KURSACH
             dataGridViewShow.ColumnCount = data.FieldCount;
 
             dataGridViewShow.Columns[0].Name = "ID";
-            dataGridViewShow.Columns[1].Name = "ID_P";
+            dataGridViewShow.Columns[1].Name = "Должность";
             dataGridViewShow.Columns[2].Name = "Фамилия";
             dataGridViewShow.Columns[3].Name = "Имя";
             dataGridViewShow.Columns[4].Name = "Отчество";
@@ -163,7 +163,17 @@ namespace TIPO_KURSACH
             {
                 for (int i = 0; i < data.FieldCount; i++)
                 {
-                    dataGridViewShow.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(","))[i];
+                    if (i == 1)
+                    {
+                        switch (Convert.ToInt32(showFormat[k].Split(Convert.ToChar(","))[1]))
+                        {
+                            case 1: dataGridViewShow.Rows[k].Cells[i].Value = "Администратор"; break;
+                            case 2: dataGridViewShow.Rows[k].Cells[i].Value = "Заместитель администратора"; break;
+                            case 3: dataGridViewShow.Rows[k].Cells[i].Value = "Уборщик"; break;
+                            case 4: dataGridViewShow.Rows[k].Cells[i].Value = "Грузчик"; break;
+                        }
+                    }
+                    else dataGridViewShow.Rows[k].Cells[i].Value = showFormat[k].Split(Convert.ToChar(","))[i];
                 }
             }
 

@@ -20,8 +20,8 @@ namespace TIPO_KURSACH
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            while (true)
-            {
+            //while (true)
+            //{
                 Menu menu = new Menu();
 
                 Autorization_Form autorization_Form = new Autorization_Form();
@@ -33,7 +33,7 @@ namespace TIPO_KURSACH
                     menu.SetAutorization(autorization.position);
                     Application.Run(menu);
                 }
-            }
+            //}
         }
     }
 }
